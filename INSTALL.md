@@ -9,5 +9,5 @@ cd AI-analyse-of-class-video
 wget -O test.zip 'https://data.xyzgate.com/e973eb8dc7e90aeb1de41870e3b6376f.zip'
 unzip test.zip
 mongorestore -d test test
-pip install tornado
+pip install tornado numpy
 ```
