@@ -3,19 +3,7 @@
 
 from app.base import BaseRequestHandler
 
-zhanghao = {"zcxx":{"password":"123456", "type": "m", "class_id": "0201"},
-            "lihonglai":{"password":"13920890036", "type": "m", "class_id": "0201"},
-            "gongyushui":{"password":"13072266220", "type": "m", "class_id": "0201"},
-            "liqun":{"password":"13032285726", "type": "m", "class_id": "0201"},
-            "miyingping":{"password":"13821402009", "type": "m", "class_id": "0201"},
-            "wangxin":{"password":"13702050639", "type": "m", "class_id": "0201"},
-            "hejinhuan":{"password":"13032218051", "type": "m", "class_id": "0201"},
-            "liuyuzhen":{"password":"18622115212", "type": "t", "class_id": "0107"},
-            "wuwenting":{"password":"18222916025", "type": "t", "class_id": "0108"},
-            "mengfanlian":{"password":"15692297970", "type": "t", "class_id": "0109"},
-            "liuzhaojing":{"password":"15732861731", "type": "t", "class_id": "0110"},
-            "caoqiuchen":{"password":"18522880056", "type": "t", "class_id": "0111"},
-            "liuzhaojing2":{"password":"15732861731", "type": "t", "class_id": "0112"},
+zhanghao = {"test":{"password":"123456", "type": "m", "class_id": "0201"},
             }
 account_type = {"t": "老师", "m": "校长", "s": "学生"}
 class SignInHandler(BaseRequestHandler):
