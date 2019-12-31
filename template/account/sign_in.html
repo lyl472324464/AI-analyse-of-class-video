@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录系统</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/icon/1.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <link href="http://vjs.zencdn.net/5.5.3/video-js.css" rel="stylesheet">
+    <!-- If you'd like to support IE8 -->
+    <script src="http://vjs.zencdn.net/ie8/1.1.1/videojs-ie8.min.js"></script>
+    <style>
+        .am-nav-tabs > li.am-active > a{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <div class="tpl-login">
+            <div class="tpl-login-content">
+                <div class="tpl-login-logo">
+
+                </div>
+                <div class="am-tabs" id="doc-my-tabs" data-am-tabs>
+                    <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+                        <li class="am-active"><a href="#tab1">学生登录</a></li>
+                        <li><a href="#tab2">教师登录</a></li>
+                        <li><a href="#tab3">管理员登录</a></li>
+                    </ul>
+                    <div class="am-tabs-bd">
+                        <div class="am-tab-panel am-active" id="tab1">
+                            <form class="am-form tpl-form-line-form" action="/signin?type=s&next={{next_page}}" method="post">
+                                <div class="am-form-group">
+                                    <input type="text" class="tpl-form-input" name="username" placeholder="请输入账号">
+                                </div>
+            
+                                <div class="am-form-group">
+                                    <input type="password" class="tpl-form-input" name="password" placeholder="请输入密码">
+                                </div>
+                                <div class="am-form-group tpl-login-remember-me ">
+                                    <label for="remember-me">
+                                    忘记密码？
+                                        </label>
+                                    <label for="remember-me">
+                                    没有账号？
+                                        </label>
+                                </div>
+                                <div class="am-form-group">
+                                    <button type="submit"  class="am-btn am-btn-secondary  am-btn-block r">登录</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="am-tab-panel" id="tab2">
+                            <form class="am-form tpl-form-line-form" action="/signin?type=t&next={{next_page}}" method="post">
+                                <div class="am-form-group">
+                                    <input type="text" class="tpl-form-input" name="username" placeholder="请输入账号">
+                                </div>
+            
+                                <div class="am-form-group">
+                                    <input type="password" class="tpl-form-input" name="password" placeholder="请输入密码">
+                                </div>
+                                <div class="am-form-group tpl-login-remember-me ">
+                                    <label for="remember-me">
+                                    忘记密码？
+                                        </label>
+                                    <label for="remember-me">
+                                    没有账号？
+                                        </label>
+                                </div>
+                                <div class="am-form-group">
+                                    <button type="submit"  class="am-btn am-btn-secondary  am-btn-block r">登录</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="am-tab-panel" id="tab3">
+                            <form class="am-form tpl-form-line-form" action="/signin?type=m&next={{next_page}}" method="post">
+                                <div class="am-form-group">
+                                    <input type="text" class="tpl-form-input" name="username" placeholder="请输入账号">
+                                </div>
+            
+                                <div class="am-form-group">
+                                    <input type="password" class="tpl-form-input" name="password" placeholder="请输入密码">
+                                </div>
+                                <div class="am-form-group tpl-login-remember-me ">
+                                    <label for="remember-me">
+                                    忘记密码？
+                                        </label>
+                                    <label for="remember-me">
+                                    没有账号？
+                                        </label>
+                                </div>
+                                <div class="am-form-group">
+                                    <button type="submit"  class="am-btn am-btn-secondary  am-btn-block r">登录</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .am-gallery-item{
+            position: relative;
+        }
+        .am-progress{
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: .6rem !important;
+            display: none;
+        }
+        .cip{
+            line-height: 3.7rem;
+            border-bottom: 1px solid #eee;
+            padding: 6.1px 0;
+        }
+        .cis1{
+            font-size: 1.3rem; opacity: 0.5
+        }
+        .cis2{
+            font-size: 1.5rem;
+            opacity: 1;
+        }
+        .cis2 span{
+            color:#f92249;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include "header.html" %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title" class="active">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 年级报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="/gi?GradeID=1&SchoolID={{school['school_id']}}"><i class="am-icon-table sidebar-nav-link-logo"></i> 高一</a></li>
+                        <li class="sidebar-nav-link"><a class="am-disabled"><i class="am-icon-table sidebar-nav-link-logo"></i> 高二</a></li>
+                        <li class="sidebar-nav-link"><a class="am-disabled"><i class="am-icon-table sidebar-nav-link-logo"></i> 高三</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="/myaccount" target="_blank" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>个人信息
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+               <!--  <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="">
+                    <div class="school-index-content" style="border-bottom: 1px solid #eee;background-color: #fff;background-position: 50% 0%;background-repeat: no-repeat;background-image: url(/static/img/fenxi.jpg);background-size: 1400px auto;">
+                        <div class="am-container">
+                            <div class="am-g">
+                                <div class="am-u-md-10 am-u-sm-10">
+                                    <div style="margin: 80px 0;">
+                                        <h1 style="font-size: 36px">大数据统计分析系统</h1>
+                                        <p class="am-kai">基于大数据技术，进行多维度学生行为分析</p>
+                                        <p class="am-kai">每周、每月、每学期自动统计分析各个科目、各个学生、各个班级、各个年级的课堂表现，并给出专业的评价</p>
+                                        <p class="am-kai">为管理者提供强有力的数据支持</p>
+                                    </div>                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 style="text-align: center;margin-top: 70px;font-weight:400;">本周各年级统计分析报告(xx一中)</h1>
+                    <p style="text-align: center;margin-bottom: 70px;" class="am-article-meta"><a href="/si?SchoolID={{school['school_id']}}">视频界面</a></p>
+                    <div class="am-u-md-4 am-u-sm-12">
+                        <div style="margin: 80px 20px;box-shadow: 0 3px 11px #a3a3a3;" class="am-panel am-panel-default">
+                            <div class="am-panel-bd" style="position: relative;">
+                                <img src="/static/img/shangke.jpeg" style="position: absolute;width: 100px;top: -50px;border-radius: 50px;box-shadow: 0 3px 11px #a3a3a3;"/>
+                                <h1 style="text-align: center;font-weight:400;">高一年级</h1>
+                                <p class="cip">
+                                    <span class="cis1">综合得分：</span><br>
+                                    <span class="cis2">本期得分：76.75<i class="am-icon-level-up" style="color:#F53C15"></i>&nbsp;&nbsp;上期得分：70.25</span>
+                                </p>
+                                
+                                <p class="cip">
+                                    <span class="cis1">课堂表现：</span><br>
+                                    <span class="cis2">本周该年级专注与书写占比为<span id="stu_num">82%</span>，较上周有明显<span>提升</span>，其中语文最高，数学最低（建议与老师及时沟通）。<br>瞌睡和交谈占比<span>2%</span>，其中数学比例最高。<br>本周得分最低的班级为：四班。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">评价：</span><br>
+                                    <span class="cis2">本周总体表现成<span id="class_points">上升</span>趋势。需要加强的科目为数学。需要加强的班级为四班。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">详情：</span><br>
+                                    <span class="cis2"><a href="/gi?GradeID=1&SchoolID={{school['school_id']}}" class="am-btn am-btn-secondary" style="background-color: #00c1de;font-size: 14px;line-height: 20px;width: 120px;">点击查看</a></span>
+                                </p>
+                            </div>
+                        </div>                           
+                    </div>
+                    <div class="am-u-md-4 am-u-sm-12">
+                        <div style="margin: 80px 20px;box-shadow: 0 3px 11px #a3a3a3;" class="am-panel am-panel-default">
+                            <div class="am-panel-bd" style="position: relative;">
+                                <img src="/static/img/shangke.jpeg" style="position: absolute;width: 100px;top: -50px;border-radius: 50px;box-shadow: 0 3px 11px #a3a3a3;"/>
+                                <h1 style="text-align: center;font-weight:400;">高二年级</h1>
+                                <p class="cip">
+                                    <span class="cis1">综合得分：</span><br>
+                                    <span class="cis2">本期得分：73.01<i class="am-icon-level-down" style="color:#2BF515"></i>&nbsp;&nbsp;上期得分：79.39</span>
+                                </p>
+                                
+                                <p class="cip">
+                                    <span class="cis1">课堂表现：</span><br>
+                                    <span class="cis2">本周该年级专注与书写占比为<span id="stu_num">79%</span>，较上周有明显<span>下降</span>，其中英语最高，物理最低（建议与老师及时沟通）。<br>瞌睡和交谈占比<span>4%</span>，其中化学比例最高。<br>本周得分最低的班级为：六班。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">评价：</span><br>
+                                    <span class="cis2">本周总体表现成<span id="class_points">下降</span>趋势。需要加强的科目为物理。需要加强的班级为六班。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">详情：</span><br>
+                                    <span class="cis2"><a href="/gi?GradeID=1&SchoolID={{school['school_id']}}" class="am-btn am-btn-secondary" style="background-color: #00c1de;font-size: 14px;line-height: 20px;width: 120px;">点击查看</a></span>
+                                </p>
+                            </div>
+                        </div>                           
+                    </div>
+                    <div class="am-u-md-4 am-u-sm-12">
+                        <div style="margin: 80px 20px;box-shadow: 0 3px 11px #a3a3a3;" class="am-panel am-panel-default">
+                            <div class="am-panel-bd" style="position: relative;">
+                                <img src="/static/img/shangke.jpeg" style="position: absolute;width: 100px;top: -50px;border-radius: 50px;box-shadow: 0 3px 11px #a3a3a3;"/>
+                                <h1 style="text-align: center;font-weight:400;">高三年级</h1>
+                                <p class="cip">
+                                    <span class="cis1">综合得分：</span><br>
+                                    <span class="cis2">本期得分：84.76<i class="am-icon-level-up" style="color:#F53C15"></i>&nbsp;&nbsp;上期得分：75.62</span>
+                                </p>
+                                
+                                <p class="cip">
+                                    <span class="cis1">课堂表现：</span><br>
+                                    <span class="cis2">本周该年级专注与书写占比为<span id="stu_num">85%</span>，较上周有明显<span>提升</span>，其中物理最高，生物最低（建议与老师及时沟通）。<br>瞌睡和交谈占比<span>3%</span>，其中英语比例最高。<br>本周得分最低的班级为：一班。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">评价：</span><br>
+                                    <span class="cis2">本周总体表现成<span id="class_points">上升</span>趋势。需要加强的科目为生物。需要加强的班级为一班。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">详情：</span><br>
+                                    <span class="cis2"><a href="/gi?GradeID=1&SchoolID={{school['school_id']}}" class="am-btn am-btn-secondary" style="background-color: #00c1de;font-size: 14px;line-height: 20px;width: 120px;">点击查看</a></span>
+                                </p>
+                            </div>
+                        </div>                           
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12" style="background-color: #fff">
+                        <h1 style="text-align: center;margin-top: 70px;font-weight:400;">本周特殊状态预警(xx一中)</h1>
+                        <div class="am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1" style="margin-bottom: 20px">
+                            <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+                                <li class="am-active"><a href="javascript: void(0)">瞌睡</a></li>
+                                <li><a href="javascript: void(0)">非学习</a></li>
+                            </ul>
+                            
+                            <div class="am-tabs-bd">
+                                <div class="am-tab-panel am-active am-fr">
+                                <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                am-avg-md-3 am-avg-lg-8 am-gallery-bordered" data-am-gallery="{  }" id="student_pics">
+                                {% for i in range(12) %}
+                                    <li>
+                                    <div class="am-gallery-item">
+                                        <a href="#" class="">
+                                            <img src="/static/img/p{{i+1}}.jpg" />
+                                        </a>
+                                    </div>
+                                    </li>
+                                {% end for %}
+                                </ul>
+                                </div>
+                                <div class="am-tab-panel am-fr">
+                                <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                am-avg-md-3 am-avg-lg-8 am-gallery-bordered" data-am-gallery="{  }" id="student_pics">
+                                {% for i in range(12) %}
+                                    <li>
+                                    <div class="am-gallery-item">
+                                        <a href="#" class="">
+                                            <img src="/static/img/n{{i+1}}.jpg" />
+                                        </a>
+                                    </div>
+                                    </li>
+                                {% end for %}
+                                </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+        </div>
+  
+    </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+
+</body>
+
+</html>

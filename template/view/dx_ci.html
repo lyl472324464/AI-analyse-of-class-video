@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style type="text/css">
+        .am-progress{
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: 6px;
+            height: .6rem !important;
+            display: none;
+        }
+        .dooncloud-body .widget-head{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+        .changeper{
+            display: none
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include '../warningsys/header.html' %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="/dxclasses?class_id={{class_info['class_id']}}" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 返回上一层
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active" style="background-color: #fff">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <div class="school-index-content" style="border-bottom: 1px solid #eee;background-color: #fff;background-position: 50% 0%;background-repeat: no-repeat;background-image: url(/static/img/fenxi.jpg);background-size: 1400px auto;">
+                        <div class="am-container">
+                            <div class="am-g">
+                                <div class="am-u-md-10 am-u-sm-10">
+                                    <div style="margin: 80px 0;">
+                                        <h1 style="font-size: 36px">{{class_info["class_name"]}}{{weeks[int(lesson_num.split("_")[0])-1]}}({{week_date}}){{days[int(lesson_num.split("_")[1]) - 1]}}{{classes_nums[int(lesson_num.split("_")[2]) - 1]}}统计分析结果</h1>
+                                        <p class="am-kai">基于大数据技术，进行多维度学生行为分析</p>
+                                        <p class="am-kai">每周、每月、每学期自动统计分析各个科目、各个学生、各个班级、各个年级的课堂表现，并给出专业的评价</p>
+                                        <p class="am-kai">为管理者提供强有力的数据支持</p>
+                                    </div>                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> 班级信息 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="widget-body am-fr dooncloud-body" style="padding-bottom: 10px">
+                                    <div class="am-u-sm-6 am-u-md-2">
+                                        <img id="class_pic" src="/static/img/{{class_info['class_id']}}.jpg" style="border-radius: 3px" class="am-center am-img-responsive">
+                                        <div class="am-progress am-progress-striped" >
+                                          <div class="am-progress-bar am-progress-bar-success"></div>
+                                        </div>
+                                    </div>  
+                                    <div class="am-u-sm-6 am-u-md-10">
+                                        班级： {{class_info["class_name"]}}<br>
+                                        {% for c in class_info["lesson_nums"] %}
+                                            {% if c["lesson_num"] == lesson_num %}
+                                                得分： {{round(c["points"], 2)}}<br> 
+                                            {% end if %}
+                                        {% end for %} 
+                                    </div>                                                                              
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                
+                        <div class="widget am-cf widget-body-lg">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">学生列表(总数{{class_info["students_num"]}}, 点击查看具体结果)</div>
+                            </div>
+                            <div class="widget-body  am-fr">
+                               <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                  am-avg-md-3 am-avg-lg-12 am-gallery-bordered" data-am-gallery="{  }" id="student_pics">
+                                  {% for index,s in enumerate(students) %}
+                                    {% if s["student_name"][-1] == "1" %}
+                                        {% if each_points[index] != 101 %}
+                                      <li>
+                                        <div class="am-gallery-item">
+                                            <a href="/dxs?class_id={{class_info['class_id']}}&student_id={{s['student_id']}}&lesson_num={{lesson_num}}" class="">
+                                              <img src="data:image/jpg;base64, {{s['student_image']}}"  alt="{{s["student_name"]}}"/>
+                                              <h3 class="am-gallery-title">姓名：{{s["student_name"]}}</h3>
+                                              <div class="am-gallery-desc">本节课分数：{% if each_points[index] > 75 %}<span style="font-size:17px;color: #478907">{{round(each_points[index],2)}}</span>{% else %}<span style="font-size:17px;color: crimson">{{round(each_points[index],2)}}</span>{% end if %}</div>
+                                            </a>
+                                            <a class="changeper" href="/dxchange?student_id={{s['student_id']}}&class_id={{class_info['class_id']}}&lesson_num={{lesson_num}}">修改</a>
+                                        </div>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        <div class="am-gallery-item">
+                                            <a href="#" class="">
+                                              <img src="data:image/jpg;base64, {{s['student_image']}}"  alt="{{s["student_name"]}}"/>
+                                              <h3 class="am-gallery-title">姓名：{{s["student_name"]}}</h3>
+                                              <div class="am-gallery-desc">警告：<span style="font-size:17px;color: crimson">缺席</span></div>
+                                            </a>
+                                            <a class="changeper" href="/dxchange?student_id={{s['student_id']}}&class_id={{class_info['class_id']}}&lesson_num={{lesson_num}}">修改</a>
+                                        </div>
+                                    </li>
+                                    {% end if %}
+                                    {% end if %}
+                                    {% end for %}
+                                    {% for index,s in enumerate(students) %}
+                                    {% if s["student_name"][-1] != "1" %}
+                                      {% if each_points[index] != 101 %}
+                                      <li>
+                                        <div class="am-gallery-item">
+                                            <a href="/dxs?class_id={{class_info['class_id']}}&student_id={{s['student_id']}}&lesson_num={{lesson_num}}" class="">
+                                              <img src="data:image/jpg;base64, {{s['student_image']}}"  alt="{{s["student_name"]}}"/>
+                                              <h3 class="am-gallery-title">姓名：{{s["student_name"]}}</h3>
+                                              <div class="am-gallery-desc">本节课分数：{% if each_points[index] > 75 %}<span style="font-size:17px;color: #478907">{{round(each_points[index],2)}}</span>{% else %}<span style="font-size:17px;color: crimson">{{round(each_points[index],2)}}</span>{% end if %}</div>
+                                            </a>
+                                            <a class="changeper" href="/dxchange?student_id={{s['student_id']}}&class_id={{class_info['class_id']}}&lesson_num={{lesson_num}}">修改</a>
+                                        </div>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        <div class="am-gallery-item">
+                                            <a href="#" class="">
+                                              <img src="data:image/jpg;base64, {{s['student_image']}}"  alt="{{s["student_name"]}}"/>
+                                              <h3 class="am-gallery-title">姓名：{{s["student_name"]}}</h3>
+                                              <div class="am-gallery-desc">警告：<span style="font-size:17px;color: crimson">缺席</span></div>
+                                            </a>
+                                            <a class="changeper" href="/dxchange?student_id={{s['student_id']}}&class_id={{class_info['class_id']}}&lesson_num={{lesson_num}}">修改</a>
+                                        </div>
+                                    </li>
+                                    {% end if %}
+                                    {% end if %}
+                                    {% end for %}
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <!--报告内容-->
+            <div id="tpl-echarts">
+
+            </div>
+
+
+        </div>
+  
+    </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        
+                // ==========================
+                // 百度图表A http://echarts.baidu.com/
+                // ==========================
+                var img_width = $("#student_pics").find("img").eq(0).css("width").split("p")[0];
+                $("#student_pics").find("img").css({"height": String(parseFloat(img_width) * 1.4) + "px"});
+                $(window).resize(function() {
+                  var img_width = $("#student_pics").find("img").eq(0).css("width").split("p")[0];
+                  $("#student_pics").find("img").css({"height": String(parseFloat(img_width) * 1.4) + "px"});
+                });
+
+                
+
+                
+            })
+    </script>
+
+</body>
+
+</html>

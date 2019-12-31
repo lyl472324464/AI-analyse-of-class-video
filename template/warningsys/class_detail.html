@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>实时分析与预警系统</title>
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="实时分析与预警系统" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .shi-container{
+            margin: 0 30px;
+        }
+        .school-index-content{
+            background-color: #fff;
+            margin: 0 !important;
+            background-repeat: no-repeat;
+            background-size: auto 540px;
+            background-position: top;
+            overflow: hidden;
+        }
+        .cip{
+            line-height: 3.7rem;
+            border-bottom: 1px solid #eee;
+            padding: 6.1px 0;
+        }
+        .cis1{
+            font-size: 1.3rem; opacity: 0.5
+        }
+        .cis2{
+            font-size: 2rem;
+            opacity: 1;
+        }
+        .cis2 span{
+            color:#f92249;
+        }
+        #canvas-container{
+            position: absolute;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body  class="theme-white">
+
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include 'header.html' %}
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+<!--                 <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-link">
+                    <a href="/myaccount" target="_blank" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>个人信息
+                    </a>
+                </li>
+                <li class="sidebar-nav-heading"></li>
+<!--                 <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+        <div style="text-align: center;margin-top: 20px;">
+            {% if thisclass["state"] == 0 %}
+            <button id="start_analyse" type="button" class="am-btn am-btn-primary am-btn-lg">开始分析</button>
+            <button id="stop_analyse" type="button" class="am-btn am-btn-danger am-btn-lg" disabled="disabled">停止分析</button>
+            {% else %}
+            <button id="start_analyse" type="button" class="am-btn am-btn-primary am-btn-lg" disabled="disabled">开始分析</button>
+            <button id="stop_analyse" type="button" class="am-btn am-btn-danger am-btn-lg">停止分析</button>
+            {% end if %}
+        </div>
+        <div class="tpl-content-wrapper active" style="margin-top:20px">
+            <div class="school-index-content" style="background-color: #fff">
+                <div class="shi-container">
+                    <div class="am-g">
+                        <div class="am-u-md-2 am-u-sm-12">
+                            <div style="box-shadow: 0 3px 11px #a3a3a3;" class="am-panel am-panel-default">
+                                <div class="am-panel-bd">
+                                    <p class="cip">
+                                        <span class="cis1">您正在观看的班级：</span><br>
+                                        <span class="cis2">{{thisclass["class_name"]}}</span>
+                                    </p>
+                                    <p class="cip">
+                                        <span class="cis1">时间：</span><br>
+                                        <span id="c_time" class="cis2"></span>
+                                    </p>
+                                    <p class="cip">
+                                        <span class="cis1">学生数量：</span><br>
+                                        <span class="cis2">检测到：<span id="stu_num"></span>人</span>
+                                    </p>
+                                    <p class="cip">
+                                        <span class="cis1">实时得分：</span><br>
+                                        <span class="cis2"><span id="class_points">无</span></span>
+                                    </p>
+                                    <p class="cip">
+                                        <span class="cis1">课程名称：</span><br>
+                                        <span class="cis2">英语</span>
+                                    </p>
+                                </div>
+                            </div>                           
+                        </div>
+                        <div class="am-u-md-8 am-u-sm-12">
+                            <div style="position: relative;">
+                                <div id="canvas-container">
+                                    <canvas id="mycanvas"></canvas>
+                                </div>
+                                <video style="display:block;margin: 0 auto" id="myvideo" controls autoplay="autoplay" width="1024" height="576">Your browser is too old which doesn't support HTML5 video.</video>
+                            </div> 
+                                                 
+                        </div>
+                        <div class="am-u-md-2 am-u-sm-12">
+                            <div style="box-shadow: 0 3px 11px #a3a3a3;" class="am-panel am-panel-default">
+                                <div class="am-panel-bd">
+                                    <p class="cip">
+                                        <span class="cis1">实时评论：</span><br>
+                                        <span class="cis2" id="pingjia">当前检测到最多的状态为<span></span>，有<span></span>的学生处于该状态，班级处于<span></span>状态，不良状态占<span></span>,整体状况<span></span></span>
+                                    </p>
+                                </div>
+                            </div> 
+                            <div class="am-alert am-alert-danger" style="margin: 10px 0">
+                            视频中每一种颜色对应一个学生
+                            </div>     
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="school-index-content" style="background-color: #f5f5f5">
+                <div class="shi-container">
+                    <div class="am-g" style="padding: 20px 0;">
+                        <div class="am-u-md-6 am-u-sm-12" id="liucheng" style="height: 500px">
+
+                        </div>
+                        <div class="am-u-md-6 am-u-sm-12" id="statebypercent-echarts" style="height: 500px">
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="school-index-content" style="padding-bottom: 20px">
+                <div class="shi-container">
+                    <h2 style="margin-top:20px">实时追踪</h2>
+                    <div>
+                        <ul id="sspics" style="min-height: 300px" data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                        am-avg-md-12 am-avg-lg-12 am-gallery-bordered" data-am-gallery="{  }" >
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="school-index-content" style="background-color: #f5f5f5">
+                <div class="shi-container">
+                    <h2 style="margin-top:20px">实时预警</h2>
+                    <div>
+                        <ul id="yjpics" style="min-height: 300px" data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                        am-avg-md-12 am-avg-lg-12 am-gallery-bordered" data-am-gallery="{  }" >
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <footer data-am-widget="footer"
+                class="am-footer am-footer-default"
+                data-am-footer="{  }">
+            <div class="am-footer-switch">
+            <span class="am-footer-ysp" data-rel="mobile"
+                data-am-modal="{target: '#am-switch-mode'}">
+                云适配版
+            </span>
+            <span class="am-footer-divider"> | </span>
+            <a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+                电脑版
+            </a>
+            </div>
+            <div class="am-footer-miscs ">
+
+                <p>由 <a href="http://www.dooncloud.com/" title="dooncloud"
+                                                        target="_blank" class="">xxxxx</a>
+                    提供技术支持</p>
+                <p>CopyRight©2014  AllMobilize Inc.</p>
+                <p>京ICP备13033158</p>
+            </div>
+        </footer>
+
+    </div>
+    <div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd" id="loading-message">正在启动AI预警算法，请稍等...</div>
+            <div class="am-modal-bd">
+            <span class="am-icon-spinner am-icon-spin"></span>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script src="/static/js/h5stream/adapter.js"></script>
+    <script src="/static/js/h5stream/platform.js"></script>
+    <script src="/static/js/h5stream/h5splayer.js"></script>
+    <script src="/static/js/h5stream/h5splayerhelper.js"></script>
+    <script>
+    var colors = ["#990033","DarkMagenta","Darkorange","#FF3366","LightSkyBlue","#CC0066","#FFFFCC","DarkViolet","#CC9909","#663300","GreenYellow","#663333","Wheat",
+    "Orchid","#33CCCC","MediumAquaMarine","#99FF99","Peru","#33FF33","Aqua","Black","Fuchsia","Gray","Green","Lime","Maroon","Navy","Olive","Purple",
+    "Red","Silver","Teal","White","Yellow","Blue"
+    ];
+    function echart_init(states_names){
+        var myChart = echarts.init(document.getElementById('liucheng'));
+        option = {
+            title: {
+                text: '分数曲线',
+                x:'center'
+            },
+            legend: {
+                top: 40,
+                right: 80,
+                data: ['时间与分数对应关系']
+            },
+            tooltip: {
+                trigger: 'axis',
+                formatter: function (params) {
+                    params = params[0];
+                    return params.name + ' : ' + params.value;
+                },
+                axisPointer: {
+                    animation: false
+                }
+            },
+            xAxis: {
+                type: 'category',
+                splitLine: {
+                    show: false
+                },
+                data: []
+            },
+            yAxis: {
+                type: 'value',
+                boundaryGap: [0, '100%'],
+                splitLine: {
+                    show: false
+                },
+                min: 70,
+                max: 100
+            },
+            series: [{
+                name: '时间与分数对应关系',
+                type: 'line',
+                showSymbol: false,
+                hoverAnimation: false,
+                smooth: true,
+                data: []
+            }]
+        };
+        myChart.setOption(option);
+        var echartsB = echarts.init(document.getElementById('statebypercent-echarts'));
+        optionB = {
+            title : {
+                text: '课堂表现',
+                subtext: '百分比',
+                x:'center'
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                bottom: 0,
+                padding: [5,5,0,5],
+                data: states_names
+            },
+            series : [
+                {
+                    name: '课堂表现',
+                    type: 'pie',
+                    radius : '55%',
+                    center: ['50%', '60%'],
+                    label: {
+                        normal: {
+                            formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                            backgroundColor: '#eee',
+                            borderColor: '#aaa',
+                            borderWidth: 1,
+                            borderRadius: 4,
+                            // shadowBlur:3,
+                            // shadowOffsetX: 2,
+                            // shadowOffsetY: 2,
+                            // shadowColor: '#999',
+                            // padding: [0, 7],
+                            rich: {
+                                a: {
+                                    color: '#999',
+                                    lineHeight: 22,
+                                    align: 'center'
+                                },
+                                // abg: {
+                                //     backgroundColor: '#333',
+                                //     width: '100%',
+                                //     align: 'right',
+                                //     height: 22,
+                                //     borderRadius: [4, 4, 0, 0]
+                                // },
+                                hr: {
+                                    borderColor: '#aaa',
+                                    width: '100%',
+                                    borderWidth: 0.5,
+                                    height: 0
+                                },
+                                b: {
+                                    fontSize: 16,
+                                    lineHeight: 33
+                                },
+                                per: {
+                                    color: '#eee',
+                                    backgroundColor: '#334455',
+                                    padding: [2, 4],
+                                    borderRadius: 2
+                                }
+                            }
+                        }
+                    },
+                    data:[
+                    ],
+                    itemStyle: {
+                        emphasis: {
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                    }
+                }
+            ]
+        };
+
+        echartsB.setOption(optionB);
+        return [myChart, echartsB]
+    }
+    function change_dom(data, states_names, line_data, line_x_data, echartsB, myChart, c, ctx, video_width){
+        var pie_states = [];
+        var points = 100;
+        var max_index = 0;
+        var max_count = 0;
+        var total_count = 0;
+        var bad_count = 0;
+        states = data.states;
+        for(i=0;i<states.length;i++){
+            pie_states.push({value: states[i], name: states_names[i]})
+        }               
+        for(i=0;i<pie_states.length;i++){
+            total_count += pie_states[i].value;
+            if(i==3 || i==4){
+                bad_count += pie_states[i].value;
+            }
+            if(pie_states[i].value>max_count){
+                max_count = pie_states[i].value;
+                max_index = i;
+            }
+        }
+        $("#pingjia").children("span").each(function(index, value){
+            if(index==0){
+                $(value).html(states_names[max_index]);
+            }else if(index==1){
+                $(value).html(Math.round(max_count*100/total_count)+"%");
+            }else if(index==2){
+                if(max_index==0){
+                    $(value).html("讲课");
+                }else if(max_index==1){
+                    $(value).html("自习");
+                }else{
+                    $(value).html("无法使别");
+                }
+            }else if(index==3){
+                $(value).html(Math.round(bad_count*100/total_count)+"%");
+            }else if(index==4){
+                $(value).html("良好");
+            }
+        });
+        points = points - pie_states[6].value - 2 * (pie_states[3].value + pie_states[4].value);
+        $("#class_points").html(points);
+        x_data = data.time.substring(0,data.time.length-4);
+        line_data.push({
+            name: x_data,
+            value: points
+        });
+        line_data = line_data.slice(-100);               
+        line_x_data.push(x_data);
+        line_x_data = line_x_data.slice(-100);
+        echartsB.setOption({series: [{
+            data: pie_states
+        }]});
+        myChart.setOption({
+            xAxis: {
+                data: line_x_data
+            },
+            series: [{
+                data: line_data
+            }]
+        });
+        rec_array = data.cur_boxes;
+        $("#stu_num").html(rec_array.length);
+        c.width=video_width;
+        
+        
+        ctx.lineWidth="2";
+        // ctx.strokeStyle="#3385ff";
+        var true_width = 3840;
+        for(i = 0; i < rec_array.length; i++){
+            ctx.beginPath();
+            coors = rec_array[i];
+            ctx.strokeStyle=colors[coors[4]%35];                          
+            ctx.rect(coors[0]*video_width/true_width, coors[1]*video_width/true_width, (coors[2]-coors[0])*video_width/true_width, (coors[3]-coors[1])*video_width/true_width);
+            ctx.stroke();          
+        }
+        
+        $(".imglist").hide();
+        for(i=0;i<data.imgs.length;i++){           
+            dataimg = data.imgs[i]
+            if(document.getElementById("img" + dataimg.index)){
+                $("#img" + dataimg.index).show();
+                $("#img" + dataimg.index).find("img").eq(0).attr('src',"data:image/jpeg;base64," + dataimg.base64.substring(2, dataimg.base64.length-1));
+                // $("#img" + dataimg.index).find("h3").eq(0).html("状态：" + states_names[dataimg.state]);
+                // $("#img" + dataimg.index).find(".am-gallery-desc").eq(0).html("时间：" + data.time.substring(0,data.time.length-7));
+            }else{
+                $("#sspics").append("<li id='img" + dataimg.index + "' class='imglist'>" + 
+                    "<div class=\"am-gallery-item\">"+
+                        "<a>"+
+                        "<img src=' data:image/jpeg;base64," + data.imgs[i].base64.substring(2, data.imgs[i].base64.length-1) + "' />"+
+                            // "<h3 class=\"am-gallery-title\">状态：" + states_names[data.imgs[i].state] + "</h3>"+
+                            // "<div class=\"am-gallery-desc\">时间：" + data.time.substring(0,data.time.length-7) + "</div>"+
+                        " </a>"+
+                    "</div>"+
+                "</li>");
+            }
+            
+        }
+        for(i=0;i<data.warningimgs.length;i++){
+            $("#yjpics").prepend("<li>" + 
+                "<div class=\"am-gallery-item\">"+
+                    "<a>"+
+                    "<img src=' data:image/jpeg;base64," + data.warningimgs[i].base64.substring(2, data.warningimgs[i].base64.length-1) + "' />"+
+                        "<h3 class=\"am-gallery-title\">状态：" + states_names[data.warningimgs[i].state] + "</h3>"+
+                        "<div class=\"am-gallery-desc\">时间：" + data.time.substring(0,data.time.length-7) + "</div>"+
+                    " </a>"+
+                "</div>"+
+            "</li>");           
+        }
+    }
+
+    $(document).ready(function(){
+        // ----------------初始化----------------
+        
+        var parent_width = $("#canvas-container").parent().css("width");
+        var video_width = parent_width.substring(0, parent_width.length-2);
+        var v=document.getElementById("myvideo");
+        v.width = video_width;
+        v.height = Math.round(video_width/16*9)+10;
+        var c=document.getElementById("mycanvas");
+        c.width = video_width;
+        c.height=Math.round(video_width/16*9)+10;
+        var ctx=c.getContext("2d");        
+        var states_names = ['专注','书写','站立','瞌睡','扭头','举手','其他']
+        var echartss = echart_init(states_names);
+        var myChart = echartss[0];
+        var echartsB = echartss[1];
+        setInterval(function () {
+            c_time = new Date();
+            namet = c_time.toTimeString().split(" ")[0];
+            $("#c_time").html(namet);
+        }, 1000);
+
+        var conf2 = {
+            videoid:'myvideo',
+            //videodom: h5svideodom2,
+            protocol: window.location.protocol, //'http:' or 'https:'
+            host: '192.168.1.31:8080', //'localhost:8080'
+            rootpath:'/', // '/' or window.location.pathname
+            token:"{{thisclass['class_id']}}",
+            hlsver:'v1', //v1 is for ts, v2 is for fmp4
+            session:'c1782caf-b670-42d8-ba90-2244d0b0ee83' //session got from login
+        };
+        var v2 = new H5sPlayerRTC(conf2);
+        v2.connect();
+        var line_data = [];
+        var line_x_data = []; 
+        var timestamp = "";
+        function fasters(){
+            $.get("/getfaster?class_id={{thisclass['class_id']}}&timestamp="+timestamp,function(data){
+                if(data != "no result"){
+                    change_dom(data, states_names, line_data, line_x_data, echartsB, myChart, c, ctx, video_width)
+                    timestamp = data.time;
+                }                                
+            })
+        }
+        var analyse_state = {{thisclass['state']}};
+        if( analyse_state == 1){
+            $("#my-modal-loading").modal("open");
+            setTimeout(function(){
+                fasters();
+                $("#my-modal-loading").modal("close");
+            }, 3000);
+            setTimeout(function(){
+                setInterval(fasters, 200)
+            }, 3500);           
+        }
+        $("#start_analyse").click(function(){
+            if( analyse_state == 0){
+                $.get("/startanalyse?class_id={{thisclass['class_id']}}",function(data){
+                    if(data == "not enough memory"){
+                        alert("算力不足，请关闭其他分析程序！");
+                    }else{
+                        if(data == "success"){
+                            window.location.reload([true]);
+                        }
+                    }
+                })
+            }
+        })
+        $("#stop_analyse").click(function(){
+            if( analyse_state == 1){
+                $.get("/stopanalyse?class_id={{thisclass['class_id']}}",function(data){
+                    if(data == "success"){
+                        alert("已关闭！")
+                        window.location.reload([true]);
+                    }
+                })
+            }
+        })
+    })
+    </script>
+</body>
+
+</html>

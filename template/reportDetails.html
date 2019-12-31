@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>报告详情</title>
+    <meta name="description" content="报告详情">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content=报告详情" />
+    <script src="assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                </span>
+                </div>
+                <!-- 搜索 -->
+                <div class="am-fl tpl-header-search">
+                    <form class="tpl-header-search-form" action="javascript:;">
+                        <button class="tpl-header-search-btn am-icon-search"></button>
+                        <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
+                    </form>
+                </div>
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎语 -->
+                        <li class="am-text-sm tpl-header-navbar-welcome">
+                            <a href="javascript:;">欢迎你, <span>课堂呵护系统</span> </a>
+                        </li>
+
+                        <!-- 新邮件 -->
+                        <li class="am-dropdown tpl-dropdown" data-am-dropdown>
+                            <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
+                                <i class="am-icon-envelope"></i>
+                                <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
+                            </a>
+                            <!-- 弹出列表 -->
+                            <ul class="am-dropdown-content tpl-dropdown-content">
+                                <li class="tpl-dropdown-menu-messages">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                        <div class="menu-messages-ico">
+                                            <img src="assets/img/user04.png" alt="">
+                                        </div>
+                                        <div class="menu-messages-time">
+                                            3小时前
+                                        </div>
+                                        <div class="menu-messages-content">
+                                            <div class="menu-messages-content-title">
+                                                <i class="am-icon-circle-o am-text-success"></i>
+                                                <span>夕风色</span>
+                                            </div>
+                                            <div class="am-text-truncate"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </div>
+                                            <div class="menu-messages-content-time">2016-09-21 下午 16:40</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="tpl-dropdown-menu-messages">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                        <div class="menu-messages-ico">
+                                            <img src="assets/img/user02.png" alt="">
+                                        </div>
+                                        <div class="menu-messages-time">
+                                            5天前
+                                        </div>
+                                        <div class="menu-messages-content">
+                                            <div class="menu-messages-content-title">
+                                                <i class="am-icon-circle-o am-text-warning"></i>
+                                                <span>禁言小张</span>
+                                            </div>
+                                            <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
+                                            <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tpl-dropdown-menu-messages">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                        <i class="am-icon-circle-o"></i> 进入列表…
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 新提示 -->
+                        <li class="am-dropdown" data-am-dropdown>
+                            <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
+                                <i class="am-icon-bell"></i>
+                                <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
+                            </a>
+
+                            <!-- 弹出列表 -->
+                            <ul class="am-dropdown-content tpl-dropdown-content">
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <div class="tpl-dropdown-menu-notifications-title">
+                                            <i class="am-icon-line-chart"></i>
+                                            <span> 有6笔新的销售订单</span>
+                                        </div>
+                                        <div class="tpl-dropdown-menu-notifications-time">
+                                            12分钟前
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <div class="tpl-dropdown-menu-notifications-title">
+                                            <i class="am-icon-star"></i>
+                                            <span> 有3个来自人事部的消息</span>
+                                        </div>
+                                        <div class="tpl-dropdown-menu-notifications-time">
+                                            30分钟前
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <div class="tpl-dropdown-menu-notifications-title">
+                                            <i class="am-icon-folder-o"></i>
+                                            <span> 上午开会记录存档</span>
+                                        </div>
+                                        <div class="tpl-dropdown-menu-notifications-time">
+                                            1天前
+                                        </div>
+                                    </a>
+                                </li>
+
+
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <i class="am-icon-bell"></i> 进入列表…
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="javascript:;">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- 风格切换 -->
+        <!--
+        <div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                </div>
+            </div>f
+        </div>
+        -->
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+
+            <!-- 用户信息 -->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable">
+                    <a href="javascript:;" class="tpl-user-panel-action-link user-panel-logged-in-text  text-right marginb20"> <span class="am-icon-pencil"></span> 账号设置</a>
+                    <div class="tpl-user-panel-profile-picture">
+                        <img src="assets/img/user04.png" alt="">
+                    </div> 
+                    <span class="user-panel-logged-in-text text-center">张迪</span>
+                </div>
+            </div>
+
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link ">
+                    <a href="index.html" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>课堂报告
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="calendar.html">
+                        <i class="am-icon-calendar sidebar-nav-link-logo"></i>最新资讯
+                    </a>
+                </li>
+             
+                <li class="sidebar-nav-link">
+                    <a href="historical.html" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
+                    </a>
+                </li>
+                 <li class="sidebar-nav-link">
+                    <a href="form.html">
+                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i>我的
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="sign-up.html">
+                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
+                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="login.html">
+                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+
+
+            <div class="row-content am-cf">
+                <div class="row">
+                        <div class="cy-order-box fontsize14">
+                            <p class="cy-order-fl aui-order-time"><i class="am-icon-clock-o"></i>&nbsp;更新日期：2018/8/18</p>
+                            <p class="cy-order-fl aui-order-address"><i class="am-icon-clock-o"></i>&nbsp;统计周期：2018/03/01-201/06/16</p>
+                        </div>
+                        <div class="cy-order-box fontsize14">
+                            <p class="cy-order-fl aui-order-time"><i class="am-icon-list-alt"></i>&nbsp;周期内主要课程时数：34课时</p>
+                            <p class="cy-order-fl aui-order-address"><i class="am-icon-clock-o"></i>&nbsp;时长：1360分钟</p>
+                        </div>
+                          <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title  am-cf">详细数据</div>
+                        </div>
+                        <div class="am-scrollable-horizontal">
+                             <table class="am-table am-table-bordered am-table-striped am-text-nowrap"><thead><tr><th>科目</th><th>课时</th><th>时长</th><th>专注(%)</th><th>书写(%)</th><th>回答(%)</th><th>瞌睡(%)</th><th>互动(%)</th></tr></thead><tbody>
+                             <tr><td>英语</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                             <tr><td>政治</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                             <tr><td>生物</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                              <tr><td>地理</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                             <tr><td>物理</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                             <tr><td>历史</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                              <tr><td>化学</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                             <tr><td>语文</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                             <tr><td>数学</td><td>5</td><td>200</td><td>72.3</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td></tr>
+                            
+                            <tr><td colspan ="3">总计</td><td>11.75</td><td>2</td><td>5.71</td><td>10.88</td><td>10.88</td></tr>
+                             </tbody></table>
+                        </div>
+                    </div>
+
+                    <!-- 详细数据end-->
+                    <!--数据分析 start -->
+                     <!--随堂影像 start-->
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title  am-cf">数据分析</div>
+                        </div>
+                        <div id="container" style="height:200px;margin-top:20px;"></div>
+                        <p style="border-top:1px solid #d9d9d9; padding-top:20px;"></p>
+                        <div id="container1" style="height:130px"></div>
+                    </div>
+                    <!--数据分析 end -->
+                    <!--随堂影像 start-->
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title  am-cf">随堂影像</div>
+                        </div>
+                        <p> <img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg" class="am-img-responsive" style="margin-top:20px;" alt=""/></p>
+                    </div>
+                    <!--随堂影像 end-->
+                    <!--总结报告 start-->
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title  am-cf">总结报告</div>
+                        </div>
+                        <div class="row">
+                        <!--本期课堂报告数据 start-->
+                        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                            <div class="dashboard-stat blue">
+                            <div class="dashboardcont">
+                                <p>王迪同学的综合课堂状态较上一期明显下降将，建议家长及老师能够及时的给予沟通。低于往期最低分，为目前个人最低课堂状态。明显低于年纪平均值，学习状态需要提高</p>
+                                <p>其中，物理在其所学科中状态得分相对较低，建议关注并引导。物理、政治、数学、历史、英语、化学、地理、生物低于年纪平均值。需要提高课堂状态、语文高于年纪平均值。继续保持争取进步</p>
+                            </div>
+                                <a class="more" href="#"> <i class="am-icon-area-chart"></i>本期课堂报告数据</a>
+                            </div>
+                        </div>
+                        <!--本期课堂报告数据 end -->
+                        <!--课堂专注 start-->
+                        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                            <div class="dashboard-stat red">
+                            <div class="dashboardcont">
+                                <p>王迪同学的综合课堂状态较上一期明显下降将，建议家长及老师能够及时的给予沟通。低于往期最低分，为目前个人最低课堂状态。明显低于年纪平均值，学习状态需要提高</p>
+                                <p>其中，物理在其所学科中状态得分相对较低，建议关注并引导。物理、政治、数学、历史、英语、化学、地理、生物低于年纪平均值。需要提高课堂状态、语文高于年纪平均值。继续保持争取进步</p>
+                            </div>
+                                <a class="more" href="#"> <i class="am-icon-book"></i>课堂专注</a>
+                            </div>
+                        </div>
+                        <!--课堂专注 end-->
+                        <!--课堂专注 start-->
+                        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                            <div class="dashboard-stat green">
+                            <div class="dashboardcont">
+                                <p>王迪同学的综合课堂状态较上一期明显下降将，建议家长及老师能够及时的给予沟通。低于往期最低分，为目前个人最低课堂状态。明显低于年纪平均值，学习状态需要提高</p>
+                                <p>其中，物理在其所学科中状态得分相对较低，建议关注并引导。物理、政治、数学、历史、英语、化学、地理、生物低于年纪平均值。需要提高课堂状态、语文高于年纪平均值。继续保持争取进步</p>
+                            </div>
+                                <a class="more" href="#"><i class="am-icon-bookmark"></i>课堂参与</a>
+                            </div>
+                        </div>
+                        <!--课堂专注 end-->
+                        <!--课堂专注 start-->
+                        <div class="am-u-lg-3 am-u-md-6 am-u-sm-12">
+                            <div class="dashboard-stat purple">
+                            <div class="dashboardcont">
+                                <p>王迪同学的综合课堂状态较上一期明显下降将，建议家长及老师能够及时的给予沟通。低于往期最低分，为目前个人最低课堂状态。明显低于年纪平均值，学习状态需要提高</p>
+                                <p>其中，物理在其所学科中状态得分相对较低，建议关注并引导。物理、政治、数学、历史、英语、化学、地理、生物低于年纪平均值。需要提高课堂状态、语文高于年纪平均值。继续保持争取进步</p>
+                            </div>
+                                <a class="more" href="#"> <i class="am-icon-th-large"></i>课堂纪律</a>
+                            </div>
+                        </div>
+                        <!--课堂专注 end-->
+
+
+                        </div>
+                    </div>
+                    <!--总结报告 end-->
+                </div>
+            </div>
+           
+            <div id="tpl-echarts">
+
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="assets/js/amazeui.datatables.min.js"></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '世界人口总量 - 条形图';
+
+option = {
+/*    title: {
+        text: '单位:(%）',
+    },
+    */
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        
+        },
+         formatter: function(params){
+          console.log(params)
+                var str = '';//声明一个变量用来存储数据
+             
+                for(var i=0; i<params.length; i++) {  //图显示的数据较多时需要循环数据，这样才可以成功的给多条数据添加单位
+                    str += '<div style="color:#df'+params[i].color+'"><span>'+ params[i].seriesName +'</span> : <span>'+ (params[i].data ? params[i].data+'%' : '暂无') +'</span></div>';
+                }
+                return str;
+         }
+    },
+    legend: {
+        data: ['年级平均值', '个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: ['回答次数',]
+    },
+    series: [
+        {
+            name: '年级平均值',
+            type: 'bar',
+            data: [18]
+        },
+        {
+            name: '个人实际值',
+            type: 'bar',
+            data: [19]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+app.title = '世界人口总量 - 条形图';
+
+option = {
+/*    title: {
+        text: '单位:(%）',
+    },
+    */
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        
+        },
+         formatter: function(params){
+          console.log(params)
+                var str = '';//声明一个变量用来存储数据
+             
+                for(var i=0; i<params.length; i++) {  //图显示的数据较多时需要循环数据，这样才可以成功的给多条数据添加单位
+                    str += '<div style="color:#df'+params[i].color+'"><span>'+ params[i].seriesName +'</span> : <span>'+ (params[i].data ? params[i].data+'%' : '暂无') +'</span></div>';
+                }
+                return str;
+         }
+    },
+    legend: {
+        data: ['年级平均值', '个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01]
+    },
+    yAxis: {
+        type: 'category',
+        data: ['专注时间','书写时间','瞌睡时间','互动时间']
+    },
+    series: [
+        {
+            name: '年级平均值',
+            type: 'bar',
+            data: [18, 23, 29, 92]
+        },
+        {
+            name: '个人实际值',
+            type: 'bar',
+            data: [19, 38, 31, 90]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+
+</body>
+
+</html>

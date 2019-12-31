@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .am-gallery-item{
+            position: relative;
+        }
+        .am-progress{
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: .6rem !important;
+            display: none;
+        }
+        .cip{
+            line-height: 3.7rem;
+            border-bottom: 1px solid #eee;
+            padding: 6.1px 0;
+        }
+        .cis1{
+            font-size: 1.3rem; opacity: 0.5
+        }
+        .cis2{
+            font-size: 1.5rem;
+            opacity: 1;
+        }
+        .cis2 span{
+            color:#f92249;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include "header.html" %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="/xz?SchoolID=cfyz" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 返回上一层
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title" class="active">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 班级报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        {% for index,i in enumerate(["一", "二", "三", "四"]) %}
+                        <li class="sidebar-nav-link"><a href="/cw?ClassID=g_1_{{index+1}}&WeekID=1"><i class="am-icon-table sidebar-nav-link-logo"></i>{{i}}班</a></li>
+                        {% end for %}
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="/myaccount" target="_blank" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>个人信息
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+               <!--  <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <h1 style="text-align: center;margin-top: 70px;font-weight:400;">本周各班级统计分析报告(高一年级)</h1>
+                    {% for index,i in enumerate(["一","二","三","四"])%}
+                    <div class="am-u-md-4 am-u-sm-12">
+                        <div style="margin: 80px 20px;box-shadow: 0 3px 11px #a3a3a3;" class="am-panel am-panel-default">
+                            <div class="am-panel-bd" style="position: relative;">
+                                <img src="/static/img/shangke.jpeg" style="position: absolute;width: 100px;top: -50px;border-radius: 50px;box-shadow: 0 3px 11px #a3a3a3;"/>
+                                <h1 style="text-align: center;font-weight:400;">高一{{i}}班</h1>
+                                <p class="cip">
+                                    <span class="cis1">综合得分：</span><br>
+                                    <span class="cis2">本期得分：{{cpoints[index]}}{% if cpoints[index] > lpoints[index] %}<i class="am-icon-level-up" style="color:#F53C15"></i>{% else %}<i class="am-icon-level-down" style="color:#2BF515"></i>{% end if %}&nbsp;&nbsp;上期得分：{{lpoints[index]}}</span>
+                                </p>
+                                
+                                <p class="cip">
+                                    <span class="cis1">课堂表现：</span><br>
+                                    <span class="cis2">本周该班级专注与书写占比为<span id="stu_num">82%</span>，较上周有明显<span>提升</span>，其中语文最高，数学最低（建议与老师及时沟通）。<br>瞌睡和交谈占比<span>2%</span>，其中数学比例最高。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">评价：</span><br>
+                                    <span class="cis2">本周总体表现成<span id="class_points">上升</span>趋势。需要加强的科目为数学。</span>
+                                </p>
+                                <p class="cip">
+                                    <span class="cis1">详情：</span><br>
+                                    <span class="cis2"><a href="/cw?ClassID=g_1_{{index+1}}&WeekID=1" class="am-btn am-btn-secondary" style="background-color: #00c1de;font-size: 14px;line-height: 20px;width: 120px;">点击查看</a></span>
+                                </p>
+                            </div>
+                        </div>                           
+                    </div>
+                    {% end for %}
+                    <div class="am-u-sm-12 am-u-md-12" style="background-color: #fff">
+                        <h1 style="text-align: center;margin-top: 70px;font-weight:400;">各班级得分柱状图(高一年级)</h1>
+                        <div style="height:500px" class="widget-body-md widget-body tpl-amendment-echarts am-fr classes_points_echarts" id="classes_points_echarts1">
+            
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <h1 style="text-align: center;margin-top: 70px;font-weight:400;">班级各学科得分柱状图(高一年级)</h1>
+                        <div style="height:500px" class="widget-body-md widget-body tpl-amendment-echarts am-fr classes_points_echarts" id="classes_points_echarts">
+            
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12" style="background-color: #fff">
+                        <h1 style="text-align: center;margin-top: 70px;font-weight:400;">课堂各状态统计信息(高一年级)</h1>
+
+                        <div class="widget-body am-tabs" data-am-tabs="{noSwipe: 1}" id="doc-tab-demo-1" style="padding: 0 30px 10px 30px">
+                            <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+                                <li class="am-active"><a href="javascript: void(0)">专注状态</a></li>
+                                <li><a href="javascript: void(0)">书写状态</a></li>
+                                <li><a href="javascript: void(0)">瞌睡状态</a></li>
+                                <li><a href="javascript: void(0)">交谈状态</a></li>
+                            </ul>
+                            
+                            <div class="am-tabs-bd">
+                            {% for i in [0, 1, 3, 4] %}
+                                <div class="am-tab-panel {% if i == 0 %}am-active{% end if %} am-cf">
+                                <div class="am-u-sm-6 am-u-md-6">
+                                    <div style="height:500px" class="widget-body-md widget-body tpl-amendment-echarts am-fr classes_points_echarts" id="classes_points_echarts_{{i}}">
+        
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-6 am-u-md-6">
+                                    <table class="am-table am-table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>科目/次数（周）</th>
+                                                <th>一班</th>
+                                                <th>二班</th>
+                                                <th>三班</th>
+                                                <th>四班</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for index,j in enumerate(classes_names) %}
+                                            <tr>
+                                                <td>{{j}}</td>
+                                                {% for c in range(4) %}
+                                                <td>{{state_array_c[c][index][i]}}</td>
+                                                {% end for %}
+                                            </tr>
+                                            {% end for %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                                {% end for %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+  
+    </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".classes_points_echarts").each(function(){
+                var e_height = $(this).css("width").split("p")[0] * 0.4;
+                if(e_height < 200){
+                    e_height = 200;
+                }
+                $(this).css({"height": e_height + "px"});
+            });
+            var posList = [
+                'left', 'right', 'top', 'bottom',
+                'inside',
+                'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+                'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+            ];
+
+            configParameters = {
+                rotate: {
+                    min: -90,
+                    max: 90
+                },
+                align: {
+                    options: {
+                        left: 'left',
+                        center: 'center',
+                        right: 'right'
+                    }
+                },
+                verticalAlign: {
+                    options: {
+                        top: 'top',
+                        middle: 'middle',
+                        bottom: 'bottom'
+                    }
+                },
+                position: {
+                    options: echarts.util.reduce(posList, function (map, pos) {
+                        map[pos] = pos;
+                        return map;
+                    }, {})
+                },
+                distance: {
+                    min: 0,
+                    max: 100
+                }
+            };
+
+            config = {
+                rotate: 90,
+                align: 'left',
+                verticalAlign: 'middle',
+                position: 'insideBottom',
+                distance: 15,
+                onChange: function () {
+                    var labelOption = {
+                        normal: {
+                            rotate: config.rotate,
+                            align: config.align,
+                            verticalAlign: config.verticalAlign,
+                            position: config.position,
+                            distance: config.distance
+                        }
+                    };
+                    myChart.setOption({
+                        series: [{
+                            label: labelOption
+                        }, {
+                            label: labelOption
+                        }, {
+                            label: labelOption
+                        }, {
+                            label: labelOption
+                        }]
+                    });
+                }
+            };
+
+            var labelOption = {
+                normal: {
+                    show: true,
+                    position: config.position,
+                    distance: config.distance,
+                    align: config.align,
+                    verticalAlign: config.verticalAlign,
+                    rotate: config.rotate,
+                    formatter: '{name|{a}}  {c}',
+                    fontSize: 16,
+                    rich: {
+                        name: {
+                            textBorderColor: '#fff'
+                        }
+                    }
+                }
+            };
+            var echarts1 = echarts.init(document.getElementById('classes_points_echarts'));
+            option1 = {
+                color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['1班', '2班', '3班', '4班']
+                },
+                toolbox: {
+                    show: false,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {show: false},
+                        data: ["语文", "数学", "英语", "物理", "化学", "生物", "政治", "历史", "地理"]
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {% for index,p in enumerate(points) %}
+                    {
+                        name: '{{index+1}}班',
+                        type: 'bar',
+                        barGap: 0,
+                        label: labelOption,
+                        data: {{p}}
+                    },
+                    {% end for %}
+                ]
+            }
+            echarts1.setOption(option1);
+            var echarts2 = echarts.init(document.getElementById('classes_points_echarts1'));
+            option2 = {
+                color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                toolbox: {
+                    show: false,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {show: false},
+                        data: ['1班', '2班', '3班', '4班']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: "分数：",
+                        type: 'bar',
+                        barGap: 0,
+                        label: labelOption,
+                        data: {{cpoints}}
+                    },
+                ]
+            }
+
+            echarts2.setOption(option2);
+            {% for i in [0,1,3,4] %}
+            var echarts_{{i}} = echarts.init(document.getElementById('classes_points_echarts_{{i}}'));
+            option_{{i}} = {
+                color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                toolbox: {
+                    show: false,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {show: false},
+                        data: ['1班', '2班', '3班', '4班']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: '次数：',
+                        type: 'bar',
+                        barGap: 0,
+                        label: labelOption,
+                        data: [{% for j in range(4) %}{{state_array[j][i]}},{% end for %}]
+                    },
+                ]
+            }
+            echarts_{{i}}.setOption(option_{{i}});
+            {% end for %}
+        })
+    </script>
+</body>
+
+</html>

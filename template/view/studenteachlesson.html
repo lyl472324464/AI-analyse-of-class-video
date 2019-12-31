@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <link rel="stylesheet" href="/static/css/jquery.range.css">
+    <style type="text/css">
+        .dooncloud-body .widget-head{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include '../warningsys/header.html' %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link" >
+                    <a href="/sw?StudentID={{student["student_id"]}}&WeekID=1" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 返回上一层
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+               <!--  <li class="sidebar-nav-link">赛格
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active" style="background-color: #fff">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> {{lesson_name}}报告 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="widget-body am-fr dooncloud-body">
+                                    <div class="am-u-sm-6 am-u-md-2">
+                                        <img src="data:image/jpg;base64, {{student["student_image"]}}" style="width:118px;height:136px;border-radius:5px" class="am-center am-img-responsive">
+                                    </div>
+                                    <div class="am-u-sm-6 am-u-md-6">
+                                       姓名： {{student["student_name"]}}<br>
+                                       班级： {{class_info["class_name"]}}<br>
+                                       本堂课得分： {{performance["points"]}}<br>
+                                       本堂课简评： {% if performance["points"] > class_points %}本堂课得分高于班级平均分（{{round(class_points,2)}}）{% else %}本堂课得分低于班级平均分（{{round(class_points,2)}}）{% end if %}，{% if performance["points"] > students_points %}本堂课得分高于其本周平均分（{{round(students_points,2)}}）{% else %}本堂课得分低于其本周平均分（{{round(students_points,2)}}）{% end if %}
+                                    </div>
+                                    <div class="am-u-sm-12 am-u-md-12">
+                                        <div class="widget am-cf" style="padding-bottom:20px">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">课堂评价</div>
+                                            </div>
+                                            <div style="padding: 20px;" class="widget-body-md widget-body tpl-amendment-echarts am-fr">
+                                                <p class="am-kai">{{class_info["class_name"]}}{{student["student_name"]}}同学， 本堂课得分： <span class="pingjia">{{round(performance["points"], 2)}}</span><br>
+                                                    课堂行为表现： {{student["student_name"]}}同学，在本周{{lesson_name}}上，
+                                                    课堂专注程度<span class="pingjia">{{["较高","一般","有待提高"][states_pingjia[0]["pingjia"]]}}</span> （专注总时间占 <span class="pingjia">{{states_pingjia[0]["point"]}}%</span>）。
+                                                    <span class="pingjia">{{["积极","能够","较少"][states_pingjia[1]["pingjia"]]}}</span>参与课堂互动，回答老师提问（活跃度<span class="pingjia">{{["较高","一般","较低"][states_pingjia[1]["pingjia"]]}}</span>，互动时间占比<span class="pingjia">{{states_pingjia[1]["point"]}}%</span>）。
+                                                    课堂上<span class="pingjia">{{["较多时间","有一段时间","小部分时间"][states_pingjia[2]["pingjia"]]}}</span>处于瞌睡、走神等非学习状态（不集中程度<span class="pingjia">{{["较高","中等","较低"][states_pingjia[2]["pingjia"]]}}</span>，占比<span class="pingjia">{{states_pingjia[2]["point"]}}%</span>）。
+                                                    另外，有<span class="pingjia">{{["较多","一些","少部分"][states_pingjia[3]["pingjia"]]}}</span>状态属于本系统不能确定的状态（占<span class="pingjia">{{states_pingjia[3]["point"]}}%</span>）。
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="am-u-sm-12 am-u-md-12">
+                                        <div class="widget am-cf" style="padding-bottom:20px">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">{{lesson_name}}课堂表现</div>
+                                            </div>
+                                            <div style="height:400px" class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="statebypercent-echarts">
+                
+                                            </div>
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">本堂课得分走势</div>
+                                            </div>
+                                            <div style="height:400px" class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="statebypercent-echarts1">
+                
+                                            </div>
+                                        </div>
+                                    </div>
+<!--                                     <div class="am-u-sm-12 am-u-md-12">
+                
+                                        <div class="widget am-cf widget-body-lg">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">时间轴</div>
+                                            </div>
+                                            <div class="widget-body  am-fr">
+                                                    <table width="100%" class="am-table am-table-compact am-text-nowrap" id="example-r">
+                                                        <thead>
+                                                            <tr>
+                                                                {% for i in performance["timeline"] %}
+                                                                <th>第{{str(i["time"])}}分钟</th>
+                                                                {% end for %}
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="gradeX">
+                                                                {% for i in performance["timeline"] %}
+                                                                <th>状态{{str(np.where(i["state"]==np.max(i["state"]))[0][0] + 1)}}</th>
+                                                                {% end for %}
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                     <div class="am-u-sm-12 am-u-md-12">
+                
+                                        <div class="widget am-cf widget-body-lg">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">随堂影像</div>
+                                            </div>
+                                            <div class="widget-body  am-fr">
+                                               <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                                  am-avg-md-3 am-avg-lg-6 am-gallery-bordered student_pics" data-am-gallery="{  }" >
+                                                    {% if len(performance["confirm_faces"]) > 12 %}
+                                                        {% for i in range(12) %}
+                                                          <li>
+                                                            <div class="am-gallery-item">
+                                                                <a href="#" class="">
+                                                                  <img src="data:image/jpg;base64, {{performance["confirm_faces"][int(len(performance["confirm_faces"])/12*i)]}}" />
+                                                                  {% try %}
+                                                                  <div class="am-gallery-desc">{{states[performance["confirm_faces_states"][int(len(performance["confirm_faces"])/12*i)]]}}</div>
+                                                                  {% except %}
+                                                                  {% end try %}
+                                                                </a>
+                                                            </div>
+                                                          </li>
+                                                        {% end for %}
+                                                    {% else %}
+                                                        {% for index,i in enumerate(performance["confirm_faces"]) %}
+                                                          <li>
+                                                            <div class="am-gallery-item">
+                                                                <a href="#" class="">
+                                                                  <img src="data:image/jpg;base64, {{i}}" />
+                                                                  <!-- {% try %}
+                                                                  <div class="am-gallery-desc">状态：{{states[performance["confirm_faces_states"][index]]}}</div>
+                                                                  {% except %}
+                                                                  {% end try %} -->
+                                                                </a>
+                                                            </div>
+                                                          </li>
+                                                        {% end for %}
+                                                    {% end if %}
+                                                  </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if len(performance["confirm_faces"]) > 6 %}
+                                    <div class="am-u-sm-12 am-u-md-12">
+                
+                                        <div class="widget am-cf widget-body-lg">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">随堂影像(视频版)</div>
+                                            </div>
+                                            <div class="widget-body  am-fr" style="text-align: center">
+                                                <img id="pics" style="height: 200px; width: 150px; margin-bottom: 20px" src="data:image/jpg;base64, {{student["student_image"]}}">
+                                               <div class="demo">
+                                                    <input type="hidden" class="single-slider" value="0" id="pic_num"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% end if %}
+                                     <!-- <div class="am-u-sm-12 am-u-md-12">
+                
+                                        <div class="widget am-cf widget-body-lg">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">随堂影像</div>
+                                            </div>
+                                            <div class="widget-body  am-fr">
+                                               <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                                  am-avg-md-3 am-avg-lg-6 am-gallery-bordered student_pics" data-am-gallery="{  }" >
+                                                    {% for i in performance["timeline"] %}
+                                                      <li>
+                                                        <div class="am-gallery-item">
+                                                            <a href="#" class="">
+                                                              <img src="data:image/jpg;base64, {{i["pic"]}}" />
+                                                                <div class="am-gallery-desc">第{{str(i["time"])}}分钟: {{states[np.where(i["state"]==np.max(i["state"]))[0][0]]}}</div>
+                                                            </a>
+                                                        </div>
+                                                      </li>
+                                                    {% end for %}
+                                                  </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    
+                    
+
+                                                 
+                            </div>
+                        </div>
+
+                    </div>
+         
+                </div>
+            
+            <!--报告内容-->
+            <div id="tpl-echarts">
+
+            </div>
+
+
+        </div>
+  
+    </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.range.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+        $(document).ready(function(){
+                {% if len(performance["confirm_faces"]) > 6 %}
+                var jrange = $('.single-slider').jRange({
+                    from: 0,
+                    to: {{len(performance["timeline"]) - 1}},
+                    step: 1,
+                    scale: [0, {{(len(performance["timeline"]) - 1)/3}}, {{(len(performance["timeline"]) - 1)/3*2}}, {{len(performance["timeline"]) - 1}}],
+                    format: '%s',
+                    width: 300,
+                    showLabels: true,
+                    showScale: true,
+                    onstatechange: function (num) {
+                         $.get("/gsp?PerformanceID={{str(performance['_id'])}}&TimeNum=" + num, function(result){
+                            $("#pics").attr("src", "data:image/jpg;base64," + result );
+                          });
+                    }
+                });
+                {% end if %}
+
+                // ==========================
+                // 百度图表A http://echarts.baidu.com/
+                // ==========================
+                var img_width = $(".student_pics").find("img").eq(0).css("width").split("p")[0];
+                $(".student_pics").find("img").css({"height": String(parseFloat(img_width)) + "px"});
+                $(window).resize(function() {
+                  var img_width = $(".student_pics").find("img").eq(0).css("width").split("p")[0];
+                  $(".student_pics").find("img").css({"height": String(parseFloat(img_width)) + "px"});
+                });
+                var echartsA = echarts.init(document.getElementById('statebypercent-echarts1'));
+                optionA = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross'
+                        },
+                        formatter: "得分 : <br/>{b}分钟 : {c}"
+                    },
+                    legend: {
+                        data:['本堂课得分走势',]
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: {{timeline_index}},
+                        axisLabel: {
+                            formatter: '{value} 分钟'
+                        }
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [{
+                        data: {{timeline_points}},
+                        type: 'line',
+                        smooth: true,
+                    }]
+                };
+        
+                echartsA.setOption(optionA);
+
+                var echartsB = echarts.init(document.getElementById('statebypercent-echarts'));
+                optionB = {
+                    title : {
+                        text: '课堂表现',
+                        subtext: '百分比',
+                        x:'center'
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        bottom: 0,
+                        padding: [5,5,0,5],
+                        data: ['专注','书写','回答','瞌睡','非学习','无效时间','起立','讨论']
+                    },
+                    series : [
+                        {
+                            name: '课堂表现',
+                            type: 'pie',
+                            radius : '55%',
+                            center: ['50%', '60%'],
+                            data:[
+                            {% for i,p in enumerate(performance["state_array"]) %}
+                                {value:{{p}}, name:'{{states[i]}}'},
+                            {% end for %}
+                            ],
+                            label: {
+                                normal: {
+                                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                                    backgroundColor: '#eee',
+                                    borderColor: '#aaa',
+                                    borderWidth: 1,
+                                    borderRadius: 4,
+                                    // shadowBlur:3,
+                                    // shadowOffsetX: 2,
+                                    // shadowOffsetY: 2,
+                                    // shadowColor: '#999',
+                                    // padding: [0, 7],
+                                    rich: {
+                                        a: {
+                                            color: '#999',
+                                            lineHeight: 22,
+                                            align: 'center'
+                                        },
+                                        // abg: {
+                                        //     backgroundColor: '#333',
+                                        //     width: '100%',
+                                        //     align: 'right',
+                                        //     height: 22,
+                                        //     borderRadius: [4, 4, 0, 0]
+                                        // },
+                                        hr: {
+                                            borderColor: '#aaa',
+                                            width: '100%',
+                                            borderWidth: 0.5,
+                                            height: 0
+                                        },
+                                        b: {
+                                            fontSize: 16,
+                                            lineHeight: 33
+                                        },
+                                        per: {
+                                            color: '#eee',
+                                            backgroundColor: '#334455',
+                                            padding: [2, 4],
+                                            borderRadius: 2
+                                        }
+                                    }
+                                }
+                            },
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+        
+                echartsB.setOption(optionB);
+            })
+    </script>
+
+</body>
+
+</html>

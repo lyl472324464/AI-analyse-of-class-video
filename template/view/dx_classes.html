@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style type="text/css">
+        .am-progress{
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: 6px;
+            height: .6rem !important;
+            display: none;
+        }
+        .dooncloud-body .widget-head{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+        .kqimg:hover
+        { 
+            cursor:pointer;
+        }
+        .am-gallery-desc span{
+            font-size: 17px;
+            color: #111;
+        }
+        .kemu{
+            color: #2c7cac !important;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include '../warningsys/header.html' %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="/dxclasseslist" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 返回上一层
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active"  style="background-color: #fff">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <div class="school-index-content" style="border-bottom: 1px solid #eee;background-color: #fff;background-position: 50% 0%;background-repeat: no-repeat;background-image: url(/static/img/fenxi.jpg);background-size: 1400px auto;">
+                        <div class="am-container">
+                            <div class="am-g">
+                                <div class="am-u-md-10 am-u-sm-10">
+                                    <div style="margin: 80px 0;">
+                                        <h1 style="font-size: 36px">{{classes["class_name"]}}{{weeks[week_num-1]}}({{week_date}})统计分析结果</h1>
+                                        <p class="am-kai">基于大数据技术，进行多维度学生行为分析</p>
+                                        <p class="am-kai">每周、每月、每学期自动统计分析各个科目、各个学生、各个班级、各个年级的课堂表现，并给出专业的评价</p>
+                                        <p class="am-kai">为管理者提供强有力的数据支持</p>
+                                    </div>                       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> 分数时间曲线 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="widget-body am-fr dooncloud-body" id="tpl-echarts" style="padding-bottom: 10px;height:400px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> 课堂列表 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="widget-body am-fr dooncloud-body" style="padding-bottom: 10px">
+                                    <div class="am-u-sm-12 am-u-md-12">
+                                        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-7
+                                        am-avg-md-7 am-avg-lg-7 am-gallery-bordered" data-am-gallery="{  }" style="width:1200px;margin: 0 auto">
+                                        {% for c in range(9) %}
+                                            {% for d in range(7) %}
+                                                {% if c == 0 %}
+                                                    {% if d == 0 %}
+                                                        <li>
+                                                        <div class="am-gallery-item">
+                                                                <!-- <img src="/static/img/{{classes['class_id']}}.jpg"  alt="课堂实时截图"/> -->
+                                                                <!-- <h3 class="am-gallery-title">{{days[d - 1]}}{{classes_nums[c - 1]}}</h3> -->
+                                                                <div class="am-gallery-desc">
+                                                                    <span>&nbsp;</span>
+                                                                </div>
+                                                        </div>
+                                                        </li>
+                                                    {% else %}
+                                                        <li>
+                                                        <div class="am-gallery-item">
+                                                                <!-- <img src="/static/img/{{classes['class_id']}}.jpg"  alt="课堂实时截图"/> -->
+                                                                <!-- <h3 class="am-gallery-title">{{days[d - 1]}}{{classes_nums[c - 1]}}</h3> -->
+                                                                <div class="am-gallery-desc" style="text-align: center;">
+                                                                    <span>{{days[d - 1]}}</span>
+                                                                </div>
+                                                        </div>
+                                                        </li>
+                                                    {% end if %}
+                                                {% else %}
+                                                    {% if d == 0 %}
+                                                        <li>
+                                                        <div class="am-gallery-item">
+                                                                <!-- <img src="/static/img/{{classes['class_id']}}.jpg"  alt="课堂实时截图"/> -->
+                                                                <!-- <h3 class="am-gallery-title">{{days[d - 1]}}{{classes_nums[c - 1]}}</h3> -->
+                                                                <div class="am-gallery-desc" style="text-align: center;">
+                                                                    <span style="line-height:52.4px">{{classes_nums[c - 1]}}</span>
+                                                                </div>
+                                                        </div>
+                                                        </li>
+                                                    {% else %}
+                                                        {% if (str(d) + "_" + str(c)) in final_lessons %}
+                                                            {% if final_lessons[str(d) + "_" + str(c)] != "未检测到学生！" %}
+                                                            <li>
+                                                            <div class="am-gallery-item">
+                                                                <a href="/dxci?class_id={{classes['class_id']}}&lesson_num={{str(week_num)+'_'+str(d) + '_' + str(c)}}" class="">
+                                                                    <!-- <img src="/static/img/{{classes['class_id']}}.jpg"  alt="课堂实时截图"/> -->
+                                                                    <!-- <h3 class="am-gallery-title">{{days[d - 1]}}{{classes_nums[c - 1]}}</h3> -->
+                                                                    <div class="am-gallery-desc">
+                                                                        科目：<span class="kemu">{% try %}{{classes_names[kechengbiao[d-1][c-1]]}}{% except %}无{% end try %}</span><br>
+                                                                        本节课分数：{% if final_lessons[str(d) + "_" + str(c)] > 75 %}<span style="font-size:17px;color: #478907">{{round(final_lessons[str(d) + "_" + str(c)],2)}}</span>{% else %}<span style="font-size:17px;color: crimson">{{round(final_lessons[str(d) + "_" + str(c)],2)}}</span>{% end if %}
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            </li>
+                                                            {% else %}
+                                                            <li>
+                                                            <div class="am-gallery-item">
+                                                                <a href="#" class="">
+                                                                    <!-- <img src="/static/img/{{classes['class_id']}}.jpg"  alt="课堂实时截图"/> -->
+                                                                    <!-- <h3 class="am-gallery-title">{{days[d - 1]}}{{classes_nums[c - 1]}}</h3> -->
+                                                                    <div class="am-gallery-desc">
+                                                                        科目：<span class="kemu">{% try %}{{classes_names[kechengbiao[d-1][c-1]]}}{% except %}无{% end try %}</span><br>
+                                                                        警告：<span style="font-size:17px;color: crimson">暂无</span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            </li>
+                                                            {% end if %}
+                                                        {% else %}
+                                                            <li>
+                                                                <div class="am-gallery-item">
+                                                                    <a href="#" class="">
+                                                                        <!-- <img src="/static/img/{{classes['class_id']}}.jpg"  alt="课堂实时截图"/> -->
+                                                                        <!-- <h3 class="am-gallery-title">{{days[d - 1]}}{{classes_nums[c - 1]}}</h3> -->
+                                                                        <div class="am-gallery-desc">
+                                                                            科目：<span class="kemu">{% try %}{{classes_names[kechengbiao[d-1][c-1]]}}{% except %}无{% end try %}</span><br>
+                                                                            警告：<span style="font-size:17px;color: crimson">暂无</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </li>
+                                                        {% end if %}
+                                                    {% end if %}
+                                                {% end if %}
+                                            {% end for %}
+                                        {% end for %}
+                                        </ul> 
+                                    </div>                                              
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+  
+    </div>
+    </div>
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var echartsA = echarts.init(document.getElementById('tpl-echarts'));
+        optionA = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                top: '3%',
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
+                type: 'category',
+                boundaryGap: false,
+                data: [
+                {% for l in lessons %}
+                    {% if l[2] != "未检测到学生！" %}
+                    "{{days[l[0] - 1]}}{{classes_nums[l[1] - 1]}}",
+                    {% end if %}
+                {% end for %}
+                ]
+            }],
+            yAxis: [{
+                type: 'value'
+            }],
+            textStyle: {
+                color: '#838FA1'
+            },
+            series: [{
+                name: '综合得分',
+                type: 'line',
+                smooth: true,
+                data: [
+                {% for l in lessons %}
+                    {% if l[2] != "未检测到学生！" %}
+                    {{round(l[2],2)}},
+                    {% end if %}
+                {% end for %}
+                ],
+                itemStyle: {
+                    normal: {
+                        color: '#1cabdb',
+                        borderColor: '#1cabdb',
+                        borderWidth: '2',
+                        borderType: 'solid',
+                        opacity: '1'
+                    },
+                    emphasis: {
+
+                    }
+                }
+            }]
+        };
+
+        echartsA.setOption(optionA);
+    })
+    </script>
+</body>
+
+</html>

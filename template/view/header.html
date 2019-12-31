@@ -1,0 +1,35 @@
+<header class="am-topbar">
+    <!-- logo -->
+    <h1 class="am-topbar-brand">
+        <a href="#"><img style="max-height: 100%;padding-right: 40px" src="/static/img/logo.png" alt=""></a>
+    </h1>
+    <!-- 右侧内容 -->
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav">
+            <li class="am-fl tpl-header-switch-button am-icon-list-ul"></li>
+            <li><a href="/">首页</a></li>
+            <li><a href="/warning">预警系统</a></li>
+            <li class="am-active"><a href="/xz?SchoolID=cfyz">分析系统</a></li>
+            <li><a href="#">查询系统</a></li>
+        </ul>
+        <!-- 其它功能-->
+        <div class="am-fr tpl-header-navbar">
+            <ul>
+                <!-- 欢迎 -->
+                <li class="am-text-sm">
+                    <a href="#">管理员：{{user[0]}}</a>
+                </li>
+                <!-- 退出 -->
+                <li class="am-text-sm">
+                    <a href="/signout">
+                        <span class="am-icon-sign-out"></span> 退出
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</header>

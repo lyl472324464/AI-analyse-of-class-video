@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>数据</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <script src="assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/echarts.js"></script>
+
+
+</head>
+
+<body class="theme-white">
+    
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                </span>
+                </div>
+                <!-- 搜索 -->
+                <div class="am-fl tpl-header-search">
+                    <form class="tpl-header-search-form" action="javascript:;">
+                        <button class="tpl-header-search-btn am-icon-search"></button>
+                        <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
+                    </form>
+                </div>
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎语 -->
+                        <li class="am-text-sm tpl-header-navbar-welcome">
+                            <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+                        </li>
+
+                        <!-- 新邮件 -->
+                        <li class="am-dropdown tpl-dropdown" data-am-dropdown>
+                            <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
+                                <i class="am-icon-envelope"></i>
+                                <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
+                            </a>
+                            <!-- 弹出列表 -->
+                            <ul class="am-dropdown-content tpl-dropdown-content">
+                                <li class="tpl-dropdown-menu-messages">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                        <div class="menu-messages-ico">
+                                            <img src="assets/img/user04.png" alt="">
+                                        </div>
+                                        <div class="menu-messages-time">
+                                            3小时前
+                                        </div>
+                                        <div class="menu-messages-content">
+                                            <div class="menu-messages-content-title">
+                                                <i class="am-icon-circle-o am-text-success"></i>
+                                                <span>夕风色</span>
+                                            </div>
+                                            <div class="am-text-truncate"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </div>
+                                            <div class="menu-messages-content-time">2016-09-21 下午 16:40</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <li class="tpl-dropdown-menu-messages">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                        <div class="menu-messages-ico">
+                                            <img src="assets/img/user02.png" alt="">
+                                        </div>
+                                        <div class="menu-messages-time">
+                                            5天前
+                                        </div>
+                                        <div class="menu-messages-content">
+                                            <div class="menu-messages-content-title">
+                                                <i class="am-icon-circle-o am-text-warning"></i>
+                                                <span>禁言小张</span>
+                                            </div>
+                                            <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
+                                            <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tpl-dropdown-menu-messages">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                        <i class="am-icon-circle-o"></i> 进入列表…
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 新提示 -->
+                        <li class="am-dropdown" data-am-dropdown>
+                            <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
+                                <i class="am-icon-bell"></i>
+                                <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
+                            </a>
+
+                            <!-- 弹出列表 -->
+                            <ul class="am-dropdown-content tpl-dropdown-content">
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <div class="tpl-dropdown-menu-notifications-title">
+                                            <i class="am-icon-line-chart"></i>
+                                            <span> 有6笔新的销售订单</span>
+                                        </div>
+                                        <div class="tpl-dropdown-menu-notifications-time">
+                                            12分钟前
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <div class="tpl-dropdown-menu-notifications-title">
+                                            <i class="am-icon-star"></i>
+                                            <span> 有3个来自人事部的消息</span>
+                                        </div>
+                                        <div class="tpl-dropdown-menu-notifications-time">
+                                            30分钟前
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <div class="tpl-dropdown-menu-notifications-title">
+                                            <i class="am-icon-folder-o"></i>
+                                            <span> 上午开会记录存档</span>
+                                        </div>
+                                        <div class="tpl-dropdown-menu-notifications-time">
+                                            1天前
+                                        </div>
+                                    </a>
+                                </li>
+
+
+                                <li class="tpl-dropdown-menu-notifications">
+                                    <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                        <i class="am-icon-bell"></i> 进入列表…
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="javascript:;">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- 风格切换 -->
+  <!--       <div class="tpl-skiner">
+      <div class="tpl-skiner-toggle am-icon-cog">
+      </div>
+      <div class="tpl-skiner-content">
+          <div class="tpl-skiner-content-title">
+              选择主题
+          </div>
+          <div class="tpl-skiner-content-bar">
+              <span class="skiner-color skiner-white" data-color="theme-white"></span>
+              <span class="skiner-color skiner-black" data-color="theme-black"></span>
+          </div>
+      </div>
+  </div> -->
+               <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!-- 用户信息 -->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable">
+                    <a href="javascript:;" class="tpl-user-panel-action-link user-panel-logged-in-text  text-right marginb20"> <span class="am-icon-pencil"></span> 账号设置</a>
+                    <div class="tpl-user-panel-profile-picture">
+                        <img src="assets/img/user04.png" alt="">
+                    </div> 
+                    <span class="user-panel-logged-in-text text-center">张迪</span>
+                </div>
+            </div>
+
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+               <!--  <li class="sidebar-nav-heading">Components <span class="sidebar-nav-heading-info"> 附加组件</span></li> -->
+                <li class="sidebar-nav-link ">
+                    <a href="index.html" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>课堂报告
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="calendar.html">
+                        <i class="am-icon-calendar sidebar-nav-link-logo"></i>最新资讯
+                    </a>
+                </li>
+               
+                <li class="sidebar-nav-link">
+                    <a href="table-list.html" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 数据列表
+                    </a>
+                </li>
+                 <li class="sidebar-nav-link">
+                    <a href="form.html">
+                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i>我的
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="sign-up.html">
+                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 注册
+                        <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="login.html">
+                        <i class="am-icon-key sidebar-nav-link-logo"></i> 登录
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+
+            <div class="row-content am-cf">
+                <div class="row">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="cy-order-box fontsize14">
+                        <p class="cy-order-fl aui-order-time"><i class="am-icon-clock-o"></i>&nbsp;更新日期：2018/8/18</p>
+                        <p class="cy-order-fl aui-order-address"><i class="am-icon-clock-o"></i>&nbsp;统计周期：2018/03/01-201/06/16</p>
+                    </div>
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title  am-cf" >课堂状态得分</div>
+                        </div>
+                        <div id="container" style="height:200px;margin-top:20px;"></div>
+                    </div>
+                     <div class="widget am-cf">
+                        <!--数据统计-->
+                        <div class="numbernum">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf" >数据统计</div>
+                             </div>
+                             <p class="cy-btn-number">总数据<a href="javascript:void(0)">更多</a></p>
+                             <div class="cy-ul-list" style="display: none">
+                                 <ul>
+                                     <li>语文</li>
+                                     <li>数学</li>
+                                     <li>英语</li>
+                                     <li>生物</li>
+                                     <li>地理</li>
+                                     <li>化学</li>
+                                     <li>物理</li>
+                                     <li>历史</li>
+                                     <li>政治</li>
+                                 </ul>
+                             </div>
+                            <div class="cy-clear"></div>
+                             <!--数据展示 start -->
+
+                             <p>课堂专注时间</p>
+                              <div id="container1" style="height:200px;margin-top:20px;"></div>
+                              <div class="cy-margin-border-botm"></div>
+                              <div id="container2" style="height:340px;width:100%; margin-top: 30px;"></div>
+                        </div>
+                         <!--数据统计-->
+                            </div>
+
+
+                         <!-- 课堂书写 -->
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf" >课堂书写</div>
+                             </div>
+                             <p>课堂书写时间</p>
+                            <div id="containersx1" style="height:200px;margin-top:20px;"></div>
+                              <div class="cy-margin-border-botm"></div>
+                              <div id="containersx2" style="height:340px;width:100%; margin-top: 30px;"></div>
+                        </div>
+                        <!-- 课堂书写 -->
+                        <!--课堂瞌睡-->
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf" >课堂瞌睡</div>
+                             </div>
+                             <p>课堂瞌睡时间</p>
+                            <div id="containerks1" style="height:200px;margin-top:20px;"></div>
+                              <div class="cy-margin-border-botm"></div>
+                              <div id="containerks2" style="height:340px;width:100%; margin-top: 30px;"></div>
+                        </div>
+                        <!--课堂瞌睡-->
+                        <!--课堂回答 -->
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf" >课堂回答</div>
+                             </div>
+                             <p>课堂回答时间</p>
+                            <div id="containerhd1" style="height:200px;margin-top:20px;"></div>
+                              <div class="cy-margin-border-botm"></div>
+                              <div id="containerhd2" style="height:340px;width:100%; margin-top: 30px;"></div>
+                        </div>
+                        <!--课堂回答 -->
+                        <!--互动状态 -->
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf" >互动状态</div>
+                             </div>
+                             <p>互动状态时间</p>
+                            <div id="containerzt1" style="height:200px;margin-top:20px;"></div>
+                              <div class="cy-margin-border-botm"></div>
+                              <div id="containerzt2" style="height:340px;width:100%; margin-top: 30px;"></div>
+                        </div>
+                         <!--互动状态 -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="assets/js/amazeui.datatables.min.js"></script>
+    <script src="assets/js/dataTables.responsive.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+//课堂状态得分
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['年级平均值','个人实际值']
+
+    },
+    
+    xAxis:  {
+        type: 'category',
+        boundaryGap: false,
+        data: ['3.27-3.31','4.3-4.7','4.10-4.14','4.17-4.21','4.24-4.28','5.1-5.5','5.8-5.12']
+    },
+    yAxis: {
+        type: 'value',
+        axisLabel: {
+            formatter: '{value}'
+        }
+    },
+    series: [
+        {
+            name:'年级平均值',
+            type:'line',
+            data:[60, 80, 90, 82, 75, 85, 69],
+            markPoint: {
+                data: [
+                    {type: 'max', name: '最大值'},
+                    {type: 'min', name: '最小值'}
+                ]
+            },
+        },
+        {
+            name:'个人实际值',
+            type:'line',
+            data:[80, 90, 82, 75, 85, 69,70],
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+//课堂专注时间
+var dom = document.getElementById("container1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['年级平均值','个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data: ['3.27-3.31','4.3-4.7','4.10-4.14','4.17-4.21','4.24-4.28','5.1-5.5','5.8-5.12']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'年级平均值',
+            type:'bar',
+            data:[60, 80, 90, 82, 75, 85, 69],
+             itemStyle:{
+                normal:{
+                    color:'#3398db'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+
+        },
+        {
+            name:'个人实际值',
+            type:'bar',
+            data:[80, 90, 82, 75, 85, 69,70],
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'dashed'
+                    }
+                },
+
+            },
+             itemStyle:{
+                normal:{
+                    color:'#4ad2ff'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+        },
+    ]
+};
+;
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+//课堂书写
+var dom = document.getElementById("container2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {},
+    legend: {
+        data: ['年级平均值','个人实际值']
+
+/*        y: 'top',
+        x: 'right',
+        orient: 'vertical',
+        padding: 10, // [5, 10, 15, 20] */
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius:10,
+                padding: [3,5]
+           }
+        },
+        indicator: [
+           { name: '语文', max:100},
+           { name: '数学', max:100},
+           { name: '英语', max:100},
+           { name: '历史', max: 100},
+           { name: '政治', max:100},
+           { name: '地理', max: 100},
+          { name: '物理', max: 100},
+           { name: '化学', max:100},
+           { name: '生物', max: 100}
+        ]
+    },
+    series: [{
+        name: '年级 vs 个人',
+        type: 'radar',
+        
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [60, 70, 80, 50, 60,40,80,88,66],
+                name : '年级平均值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#ff6600',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            },
+             {
+                value : [70, 80, 50, 60,40,80,68,79,66],
+                name : '个人实际值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.5,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#B8D3E4',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+
+
+var dom = document.getElementById("containersx1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['年级平均值','个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data: ['3.27-3.31','4.3-4.7','4.10-4.14','4.17-4.21','4.24-4.28','5.1-5.5','5.8-5.12']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'年级平均值',
+            type:'bar',
+            data:[60, 80, 90, 82, 75, 85, 69],
+             itemStyle:{
+                normal:{
+                    color:'#3398db'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+
+        },
+        {
+            name:'个人实际值',
+            type:'bar',
+            data:[80, 90, 82, 75, 85, 69,70],
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'dashed'
+                    }
+                },
+
+            },
+             itemStyle:{
+                normal:{
+                    color:'#4ad2ff'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+        },
+    ]
+};
+;
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+//数据统计
+var dom = document.getElementById("containersx2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {},
+    legend: {
+        data: ['年级平均值','个人实际值']
+
+/*        y: 'top',
+        x: 'right',
+        orient: 'vertical',
+        padding: 10, // [5, 10, 15, 20] */
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius:10,
+                padding: [3,5]
+           }
+        },
+        indicator: [
+           { name: '语文', max:100},
+           { name: '数学', max:100},
+           { name: '英语', max:100},
+           { name: '历史', max: 100},
+           { name: '政治', max:100},
+           { name: '地理', max: 100},
+          { name: '物理', max: 100},
+           { name: '化学', max:100},
+           { name: '生物', max: 100}
+        ]
+    },
+    series: [{
+        name: '年级 vs 个人',
+        type: 'radar',
+        
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [60, 70, 80, 50, 60,40,80,88,66],
+                name : '年级平均值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#ff6600',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            },
+             {
+                value : [70, 80, 50, 60,40,80,68,79,66],
+                name : '个人实际值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.5,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#B8D3E4',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+//课堂瞌睡
+var dom = document.getElementById("containerks1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['年级平均值','个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data: ['3.27-3.31','4.3-4.7','4.10-4.14','4.17-4.21','4.24-4.28','5.1-5.5','5.8-5.12']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'年级平均值',
+            type:'bar',
+            data:[60, 80, 90, 82, 75, 85, 69],
+             itemStyle:{
+                normal:{
+                    color:'#3398db'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+
+        },
+        {
+            name:'个人实际值',
+            type:'bar',
+            data:[80, 90, 82, 75, 85, 69,70],
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'dashed'
+                    }
+                },
+
+            },
+             itemStyle:{
+                normal:{
+                    color:'#4ad2ff'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+        },
+    ]
+};
+;
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+//数据统计
+var dom = document.getElementById("containerks2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {},
+    legend: {
+        data: ['年级平均值','个人实际值']
+
+/*        y: 'top',
+        x: 'right',
+        orient: 'vertical',
+        padding: 10, // [5, 10, 15, 20] */
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius:10,
+                padding: [3,5]
+           }
+        },
+        indicator: [
+           { name: '语文', max:100},
+           { name: '数学', max:100},
+           { name: '英语', max:100},
+           { name: '历史', max: 100},
+           { name: '政治', max:100},
+           { name: '地理', max: 100},
+          { name: '物理', max: 100},
+           { name: '化学', max:100},
+           { name: '生物', max: 100}
+        ]
+    },
+    series: [{
+        name: '年级 vs 个人',
+        type: 'radar',
+        
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [60, 70, 80, 50, 60,40,80,88,66],
+                name : '年级平均值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#ff6600',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            },
+             {
+                value : [70, 80, 50, 60,40,80,68,79,66],
+                name : '个人实际值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.5,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#B8D3E4',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+//课堂回答
+var dom = document.getElementById("containerhd1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['年级平均值','个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data: ['3.27-3.31','4.3-4.7','4.10-4.14','4.17-4.21','4.24-4.28','5.1-5.5','5.8-5.12']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'年级平均值',
+            type:'bar',
+            data:[60, 80, 90, 82, 75, 85, 69],
+             itemStyle:{
+                normal:{
+                    color:'#3398db'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+
+        },
+        {
+            name:'个人实际值',
+            type:'bar',
+            data:[80, 90, 82, 75, 85, 69,70],
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'dashed'
+                    }
+                },
+
+            },
+             itemStyle:{
+                normal:{
+                    color:'#4ad2ff'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+        },
+    ]
+};
+;
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+//数据统计
+var dom = document.getElementById("containerhd2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {},
+    legend: {
+        data: ['年级平均值','个人实际值']
+
+/*        y: 'top',
+        x: 'right',
+        orient: 'vertical',
+        padding: 10, // [5, 10, 15, 20] */
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius:10,
+                padding: [3,5]
+           }
+        },
+        indicator: [
+           { name: '语文', max:100},
+           { name: '数学', max:100},
+           { name: '英语', max:100},
+           { name: '历史', max: 100},
+           { name: '政治', max:100},
+           { name: '地理', max: 100},
+          { name: '物理', max: 100},
+           { name: '化学', max:100},
+           { name: '生物', max: 100}
+        ]
+    },
+    series: [{
+        name: '年级 vs 个人',
+        type: 'radar',
+        
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [60, 70, 80, 50, 60,40,80,88,66],
+                name : '年级平均值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#ff6600',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            },
+             {
+                value : [70, 80, 50, 60,40,80,68,79,66],
+                name : '个人实际值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.5,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#B8D3E4',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+//互动状态
+var dom = document.getElementById("containerzt1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+
+option = {
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    legend: {
+        data:['年级平均值','个人实际值']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data: ['3.27-3.31','4.3-4.7','4.10-4.14','4.17-4.21','4.24-4.28','5.1-5.5','5.8-5.12']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'年级平均值',
+            type:'bar',
+            data:[60, 80, 90, 82, 75, 85, 69],
+             itemStyle:{
+                normal:{
+                    color:'#3398db'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+
+        },
+        {
+            name:'个人实际值',
+            type:'bar',
+            data:[80, 90, 82, 75, 85, 69,70],
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'dashed'
+                    }
+                },
+
+            },
+             itemStyle:{
+                normal:{
+                    color:'#4ad2ff'
+            },
+            label:{ 
+                                    normal:{ 
+                                        show: true, 
+                                        position: 'insideTop'} 
+                                        }
+                            }
+        },
+    ]
+};
+;
+
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+//数据统计
+var dom = document.getElementById("containerzt2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    tooltip: {},
+    legend: {
+        data: ['年级平均值','个人实际值']
+
+/*        y: 'top',
+        x: 'right',
+        orient: 'vertical',
+        padding: 10, // [5, 10, 15, 20] */
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius:10,
+                padding: [3,5]
+           }
+        },
+        indicator: [
+           { name: '语文', max:100},
+           { name: '数学', max:100},
+           { name: '英语', max:100},
+           { name: '历史', max: 100},
+           { name: '政治', max:100},
+           { name: '地理', max: 100},
+          { name: '物理', max: 100},
+           { name: '化学', max:100},
+           { name: '生物', max: 100}
+        ]
+    },
+    series: [{
+        name: '年级 vs 个人',
+        type: 'radar',
+        
+        // areaStyle: {normal: {}},
+        data : [
+            {
+                value : [60, 70, 80, 50, 60,40,80,88,66],
+                name : '年级平均值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#ff6600',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            },
+             {
+                value : [70, 80, 50, 60,40,80,68,79,66],
+                name : '个人实际值',
+                areaStyle: {
+                        normal: {
+                            opacity: 0.5,
+                            color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                                {
+                                    color: '#B8D3E4',
+                                    offset: 0
+                                },
+                                {
+                                    color: '#72ACD1',
+                                    offset: 1
+                                }
+                            ])
+                        }
+                    }
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+
+
+       </script>
+       <script>
+           $(function(){
+            var flag  = true;
+            $('.cy-btn-number').click(function(){
+                if(flag == true){
+                    $(".cy-ul-list").css('display','block');
+                    flag  = false;
+                }else{
+                    $(".cy-ul-list").css('display','none');
+                    flag = true
+                }
+            })
+           })
+       </script>
+</html>

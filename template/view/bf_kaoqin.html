@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style type="text/css">
+        .am-progress{
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: 6px;
+            height: .6rem !important;
+            display: none;
+        }
+        .dooncloud-body .widget-head{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+        .kqimg:hover
+        { 
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href=""><img src="/static/img/logo.png" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list-ul"></div>
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎 -->
+                        <li class="am-text-sm">
+                            <a href="#"></a>
+                        </li>
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="/">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 无感知考勤
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> 无感知考勤报告 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="widget-body am-fr dooncloud-body" style="padding-bottom: 10px">
+                                    <div class="am-u-sm-6 am-u-md-2">
+                                        <img id="class_pic" src="/static/img/kaoqin.jpg" style="border-radius: 3px" class="am-center am-img-responsive">
+                                        <div class="am-progress am-progress-striped" >
+                                          <div class="am-progress-bar am-progress-bar-success"></div>
+                                        </div>
+                                    </div>
+                                    <div class="am-u-sm-6 am-u-md-6">
+                                       课程名称： {{kaoqin["kechengming"]}}<br>
+                                       上课时间： {{kaoqin["time"]}}<br>
+                                       上课地点： {{kaoqin["jiaoshi"]}}<br>
+                                       学生总数： {{len(kaoqin["shangkexuesheng"])}}
+                                    </div>
+                                    <div class="am-u-sm-12 am-u-md-12">
+                                        <div class="widget am-cf">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">考勤结果</div>
+                                            </div>
+                                            <div style="height: 400px" class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echartsB">
+                
+                                            </div>
+                                        </div>
+                                    </div>
+                                                                                  
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                
+                        <div class="widget am-cf widget-body-lg">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">未到学生列表(总数：{{len(kaoqin["shangkexuesheng"]) - number}})</div>
+                            </div>
+                            <div class="widget-body  am-fr">
+                                
+                               <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                  am-avg-md-3 am-avg-lg-12 am-gallery-bordered" data-am-gallery="{  }" id="student_pics">
+                                  {% for s in students %}
+                                        {% if s["xh"] not in shidao %}
+                                      <li>
+                                        <div class="am-gallery-item">
+                                              <img src="data:image/jpg;base64, {{s["img"]}}"  alt="{{s["xm"]}}"/>
+                                              <h3 class="am-gallery-title">{{s["xm"]}}</h3>                                             
+                                        </div>
+                                      </li>
+                                      {% end if %}
+                                    {% end for %}      
+                                  </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                
+                        <div class="widget am-cf widget-body-lg">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">实到学生列表(总数：{{number}})</div>
+                            </div>
+                            <div class="widget-body  am-fr">
+                                
+                               <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                  am-avg-md-3 am-avg-lg-12 am-gallery-bordered" data-am-gallery="{  }" id="student_pics">
+                                  {% for s in students %}
+                                        {% if s["xh"] in shidao %}
+                                      <li>
+                                        <div class="kqimg am-gallery-item" id="{{s['xh']}}">
+                                              <img src="data:image/jpg;base64, {{s["img"]}}"  alt="{{s["xm"]}}"/>
+                                              <h3 class="am-gallery-title">{{s["xm"]}}</h3>
+                                              <div class="am-gallery-desc">考勤记录</div>
+                                        </div>
+                                      </li>
+                                      {% end if %}
+                                    {% end for %}
+                                  </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            
+            <!--报告内容-->
+            <div id="tpl-echarts">
+
+            </div>
+
+
+        </div>
+  
+    </div>
+    </div>
+
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="kq_modal">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">考勤记录
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd">
+                <figure data-am-widget="figure" class="am am-figure am-figure-default ">
+                    <img id="kq_modal_img" src=""/>
+                    <figcaption id="kq_modal_like" class="am-figure-capition-btm">
+                    </figcaption>  
+                </figure>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        
+                // ==========================
+                // 百度图表A http://echarts.baidu.com/
+                // ==========================
+                $(".kqimg").on('click', function(e) {
+                    $.get("/kqimg?kch={{kaoqin['kch']}}&time={{kaoqin['time']}}&xh=" + $(this).attr("id"), function(data){
+                        $("#kq_modal_img").attr("src", "data:image/jpg;base64," + data.img); 
+                        $("#kq_modal_like").html("相似度：" + data.like.toFixed(2));
+                        $("#kq_modal").modal();
+                    })
+                })
+                var echartsB = echarts.init(document.getElementById('tpl-echartsB'));
+                optionB = {
+                    title : {
+                        text: '考勤结果',
+                        subtext: '百分比',
+                        x:'center'
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        bottom: 0,
+                        padding: [5,5,0,5],
+                        data: ['实到','未到']
+                    },
+                    series : [
+                        {
+                            name: '考勤结果',
+                            type: 'pie',
+                            radius : '55%',
+                            center: ['50%', '60%'],
+                            data:[
+                                {value:{{number}}, name:'实到'},
+                                {value:{{len(kaoqin["shangkexuesheng"]) - number}}, name:'未到'}
+                            ],
+                            label: {
+                                normal: {
+                                    formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+                                    backgroundColor: '#eee',
+                                    borderColor: '#aaa',
+                                    borderWidth: 1,
+                                    borderRadius: 4,
+                                    // shadowBlur:3,
+                                    // shadowOffsetX: 2,
+                                    // shadowOffsetY: 2,
+                                    // shadowColor: '#999',
+                                    // padding: [0, 7],
+                                    rich: {
+                                        a: {
+                                            color: '#999',
+                                            lineHeight: 22,
+                                            align: 'center'
+                                        },
+                                        // abg: {
+                                        //     backgroundColor: '#333',
+                                        //     width: '100%',
+                                        //     align: 'right',
+                                        //     height: 22,
+                                        //     borderRadius: [4, 4, 0, 0]
+                                        // },
+                                        hr: {
+                                            borderColor: '#aaa',
+                                            width: '100%',
+                                            borderWidth: 0.5,
+                                            height: 0
+                                        },
+                                        b: {
+                                            fontSize: 16,
+                                            lineHeight: 33
+                                        },
+                                        per: {
+                                            color: '#eee',
+                                            backgroundColor: '#334455',
+                                            padding: [2, 4],
+                                            borderRadius: 2
+                                        }
+                                    }
+                                }
+                            },
+                            itemStyle: {
+                                emphasis: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                }
+                            }
+                        }
+                    ]
+                };
+        
+                echartsB.setOption(optionB);
+
+                
+            })
+    </script>
+
+</body>
+
+</html>

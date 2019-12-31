@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .am-gallery-item{
+            position: relative;
+        }
+        .am-progress{
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: .6rem !important;
+            display: none;
+        }
+        .am-nav-tabs > li.am-active > a, .am-nav-tabs > li.am-active > a:focus, .am-nav-tabs > li.am-active > a:hover{
+            background-color: #f5f5f6;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include "header.html" %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title" class="active">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 年级报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="/gi?GradeID=1&SchoolID={{school['school_id']}}"><i class="am-icon-table sidebar-nav-link-logo"></i> 高一</a></li>
+                        <li class="sidebar-nav-link"><a class="am-disabled"><i class="am-icon-table sidebar-nav-link-logo"></i> 高二</a></li>
+                        <li class="sidebar-nav-link"><a class="am-disabled"><i class="am-icon-table sidebar-nav-link-logo"></i> 高三</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="/myaccount" target="_blank" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>个人信息
+                    </a>
+                </li>
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>语文</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>数学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>英语</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>物理</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>化学</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>生物</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>政治</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>历史</a></li>
+                        <li class="sidebar-nav-link"><a href="table-list-img.html"> <span class="am-icon-angle-right sidebar-nav-link-logo"></span>地理</a></li>
+                    </ul>
+                </li> -->
+                <li class="sidebar-nav-heading"></li>
+               <!--  <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <h1 style="text-align: center;margin-top: 70px;font-weight:400;">班级图片长廊(xx一中)</h1>
+                                    
+                        <div class="am-u-sm-12 am-u-md-12">
+                                <div data-am-tabs class="am-tabs" style="padding-bottom: 20px">
+                                    <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
+                                        <li class="am-active"><a href="[data-tab-panel-0]">高一年级</a></li>
+                                        <li class=""><a href="[data-tab-panel-1]">高二年级</a></li>
+                                        <li class=""><a href="[data-tab-panel-2]">高三年级</a></li>
+                                    </ul>
+                                    <div class="am-tabs-bd">
+                                        <div data-tab-panel-0 class="am-tab-panel am-active">
+                                            <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1
+                                            am-avg-md-2 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{  }" >
+                                            {% for g in g1 %}
+                                                <li>
+                                                <div class="am-gallery-item" id="{{g["class_id"]}}">
+                                                    <img src="data:image/jpg;base64, {{g["class_pic"]}}"  alt=""/>
+                                                    <a href="/cw?ClassID={{g["class_id"]}}&WeekID=1" class="">
+                                                        
+                                                        <h3 class="am-gallery-title">{{g["class_name"]}}</h3>
+                                                        <div class="am-gallery-desc">{{g["school_name"]}}</div>
+                                                    </a>
+                                                    <div class="am-progress am-progress-striped" >
+                                                        <div class="am-progress-bar am-progress-bar-success"></div>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                {% end for %}
+                                            </ul>
+
+                                        </div>
+                                        <div data-tab-panel-1 class="am-tab-panel " style="height:275px">
+                                        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1
+                                            am-avg-md-2 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{  }" >
+                                        {% for g in g2 %}
+                                            <li>
+                                            <div class="am-gallery-item" id="{{g["class_id"]}}">
+                                                <img src="data:image/jpg;base64, {{g["class_pic"]}}"  alt=""/>
+                                                <a href="/cw?ClassID={{g["class_id"]}}&WeekID=1" class="">
+                                                    
+                                                    <h3 class="am-gallery-title">{{g["class_name"]}}</h3>
+                                                    <div class="am-gallery-desc">{{g["school_name"]}}</div>
+                                                </a>
+                                                <div class="am-progress am-progress-striped" >
+                                                    <div class="am-progress-bar am-progress-bar-success"></div>
+                                                </div>
+                                            </div>
+                                            </li>
+                                            {% end for %}
+                                            </ul>
+                                        </div>
+                                        <div data-tab-panel-2 class="am-tab-panel " style="height:275px">
+                                        <ul data-am-widget="gallery" class="am-gallery am-avg-sm-1
+                                            am-avg-md-2 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{  }" >
+                                        {% for g in g3 %}
+                                            <li>
+                                            <div class="am-gallery-item" id="{{g["class_id"]}}">
+                                                <img src="data:image/jpg;base64, {{g["class_pic"]}}"  alt=""/>
+                                                <a href="/cw?ClassID={{g["class_id"]}}&WeekID=1" class="">  
+                                                    <h3 class="am-gallery-title">{{g["class_name"]}}</h3>
+                                                    <div class="am-gallery-desc">{{g["school_name"]}}</div>
+                                                </a>
+                                                <div class="am-progress am-progress-striped" >
+                                                    <div class="am-progress-bar am-progress-bar-success"></div>
+                                                </div>
+                                            </div>
+                                            </li>
+                                            {% end for %}
+                                        </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </div>                                                                           
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12" style="background-color: #fff">
+                        <h1 style="text-align: center;margin-top: 70px;font-weight:400;">各年级各班级得分对比(xx一中)</h1>
+                        <div class="widget-body-md widget-body tpl-amendment-echarts am-fr classes_points_echarts" id="classes_points_echarts">
+            
+                        </div>
+                    </div>
+                </div>
+            
+
+
+        </div>
+  
+    </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".classes_points_echarts").each(function(){
+                var e_height = $(this).css("width").split("p")[0] * 0.4;
+                if(e_height < 200){
+                    e_height = 200;
+                }
+                $(this).css({"height": e_height + "px"});
+            });
+            // $(window).resize(function() {
+            //     $(".classes_points_echarts").each(function(){
+            //         var e_height = $(this).css("width").split("p")[0] * 0.4;
+            //         if(e_height < 200){
+            //             e_height = 200;
+            //         }
+            //         $(this).css({"height": e_height + "px"});
+            //     });
+            // });
+            $(".am-gallery-item img").mousemove(function(e){
+                var mouse_x = e.pageX - $(this).offset().left;
+                var img_width = $(this).width();
+                var percents = mouse_x/img_width;
+                var pic_num = Math.floor(percents * 99);
+                // console.log($(this).parent().parent().find(".am-progress-bar").eq(0))
+                $(this).parent().find(".am-progress-bar").eq(0).css("width", Math.floor(percents * 100) + "%");    
+                $(this).attr("src", "static/pics/" + $(this).parent().attr("id") + "/" + pic_num + ".jpg");
+            });
+            $(".am-gallery-item img").mouseover(function(){
+              $(this).parent().find(".am-progress").eq(0).show();
+            });
+            $(".am-gallery-item img").mouseout(function(){
+              $(this).parent().find(".am-progress").eq(0).hide();
+            });
+            var echartsA = echarts.init(document.getElementById('classes_points_echarts'));
+
+            var posList = [
+                'left', 'right', 'top', 'bottom',
+                'inside',
+                'insideTop', 'insideLeft', 'insideRight', 'insideBottom',
+                'insideTopLeft', 'insideTopRight', 'insideBottomLeft', 'insideBottomRight'
+            ];
+
+            configParameters = {
+                rotate: {
+                    min: -90,
+                    max: 90
+                },
+                align: {
+                    options: {
+                        left: 'left',
+                        center: 'center',
+                        right: 'right'
+                    }
+                },
+                verticalAlign: {
+                    options: {
+                        top: 'top',
+                        middle: 'middle',
+                        bottom: 'bottom'
+                    }
+                },
+                position: {
+                    options: echarts.util.reduce(posList, function (map, pos) {
+                        map[pos] = pos;
+                        return map;
+                    }, {})
+                },
+                distance: {
+                    min: 0,
+                    max: 100
+                }
+            };
+
+            config = {
+                rotate: 90,
+                align: 'left',
+                verticalAlign: 'middle',
+                position: 'insideBottom',
+                distance: 15,
+                onChange: function () {
+                    var labelOption = {
+                        normal: {
+                            rotate: config.rotate,
+                            align: config.align,
+                            verticalAlign: config.verticalAlign,
+                            position: config.position,
+                            distance: config.distance
+                        }
+                    };
+                    myChart.setOption({
+                        series: [{
+                            label: labelOption
+                        }, {
+                            label: labelOption
+                        }, {
+                            label: labelOption
+                        }, {
+                            label: labelOption
+                        }]
+                    });
+                }
+            };
+
+            var labelOption = {
+                normal: {
+                    show: true,
+                    position: config.position,
+                    distance: config.distance,
+                    align: config.align,
+                    verticalAlign: config.verticalAlign,
+                    rotate: config.rotate,
+                    formatter: '{name|{a}}  {c}',
+                    fontSize: 16,
+                    rich: {
+                        name: {
+                            textBorderColor: '#fff'
+                        }
+                    }
+                }
+            };
+
+            optionA = {
+                color: ['#003366', '#006699', '#4cabce', '#e5323e'],
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    data: ['1班', '2班', '3班', '4班']
+                },
+                toolbox: {
+                    show: false,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: {show: true},
+                        dataView: {show: true, readOnly: false},
+                        magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                        restore: {show: true},
+                        saveAsImage: {show: true}
+                    }
+                },
+                calculable: true,
+                xAxis: [
+                    {
+                        type: 'category',
+                        axisTick: {show: false},
+                        data: ['高一年级', '高二年级', '高三年级']
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {% for index,p in enumerate(points) %}
+                    {
+                        name: '{{str(index+1)}}班',
+                        type: 'bar',
+                        barGap: 0,
+                        label: labelOption,
+                        data: {{p}}
+                    },
+                    {% end for %}
+                ]
+            }
+            echartsA.setOption(optionA);
+            
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style type="text/css">
+        .am-progress{
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            top: 6px;
+            height: .6rem !important;
+            display: none;
+        }
+        .dooncloud-body .widget-head{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include "header.html" %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                {% if user[1] == "m" %}
+                <li class="sidebar-nav-link">
+                    <a href="/si?SchoolID=cfyz" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 返回上一层
+                    </a>
+                </li>
+                {% end if %}
+                <!-- <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-link">
+                    <a href="/cwc?ClassID={{class_info["class_id"]}}&WeekID=1">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                    </a>
+                </li>
+                <li class="sidebar-nav-heading"></li>
+               <!--  <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+        <div class="tpl-content-wrapper active">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="background-color: #fff">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf widget-body-lg" style="min-height:0">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">本周报告</div>
+                            </div>
+                            <div class="widget-body  am-cf">
+                                <div class="am-u-sm-6 am-u-md-2">
+                                    <img id="class_pic" src="data:image/jpg;base64, {{class_info["class_pic"]}}" style="border-radius: 3px" class="am-center am-img-responsive">
+                                    <div class="am-progress am-progress-striped" >
+                                        <div class="am-progress-bar am-progress-bar-success"></div>
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-6 am-u-md-10">
+                                    班级： {{class_info["class_name"]}}<br>
+                                    学校： {{class_info["school_name"]}}<br>
+                                    本周得分： {{round(class_info["points"], 2)}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+
+                        <div class="widget am-cf widget-body-lg">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">课程表</div>
+                            </div>
+                            <div class="widget-body  am-fr">
+                                    <table width="100%" class="am-table am-table-compact am-text-nowrap" id="example-r">
+                                        <thead>
+                                            <tr>
+                                                <th>周一</th>
+                                                <th>周二</th>
+                                                <th>周三</th>
+                                                <th>周四</th>
+                                                <th>周五</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(9) %}                                     
+                                                <tr class="gradeX">
+                                                    {% for l in class_info["lessons"] %}
+                                                    <td><a href="/cl?ClassID={{class_info["class_id"]}}&LessonNum={{l[i]["lesson_num"]}}">{{l[i]["lesson_name"]}}</a></td>
+                                                    {% end for %}
+                                                </tr>                                                             
+                                            {% end for %}
+                                        </tbody>
+                                    </table>
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">综合得分趋势</div>
+                            </div>
+                            <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">得分分布图</div>
+                            </div>
+                            <div style="height: 400px" class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echartsB">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="am-u-sm-12 am-u-md-12">
+                
+                        <div class="widget am-cf widget-body-lg">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl">学生列表(总数{{class_info["students_num"]}})</div>
+                            </div>
+                            <div class="widget-body  am-fr">
+                               <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                                  am-avg-md-3 am-avg-lg-12 am-gallery-bordered" data-am-gallery="{  }" id="student_pics">
+                                  {% for s in students %}
+                                      <li>
+                                        <div class="am-gallery-item">
+                                            <a href="/sw?StudentID={{s["student_id"]}}&WeekID=1" class="">
+                                              <img src="data:image/jpg;base64, {{s["student_image"]}}"  alt="{{s["student_name"]}}"/>
+                                              <h3 class="am-gallery-title">{{s["student_name"]}}</h3>
+                                            </a>
+                                        </div>
+                                      </li>
+                                    {% end for %}
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+  
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        
+                // ==========================
+                // 百度图表A http://echarts.baidu.com/
+                // ==========================
+                var img_width = $("#student_pics").find("img").eq(0).css("width").split("p")[0];
+                $("#student_pics").find("img").css({"height": String(parseFloat(img_width) * 1.2) + "px"});
+                $(window).resize(function() {
+                  var img_width = $("#student_pics").find("img").eq(0).css("width").split("p")[0];
+                  $("#student_pics").find("img").css({"height": String(parseFloat(img_width) * 1.2) + "px"});
+                });
+
+                $("#class_pic").mousemove(function(e){
+                    var mouse_x = e.pageX - $(this).offset().left;
+                    var img_width = $(this).width();
+                    var percents = mouse_x/img_width;
+                    var pic_num = Math.floor(percents * 99);
+                    // console.log($(this).parent().parent().find(".am-progress-bar").eq(0))
+                    $(this).next().find(".am-progress-bar").eq(0).css("width", Math.floor(percents * 100) + "%");    
+                    $(this).attr("src", "static/pics/{{class_info["class_id"]}}/" + pic_num + ".jpg");
+                });
+                $("#class_pic").mouseover(function(){
+                  $(this).next().show();
+                });
+                $("#class_pic").mouseout(function(){
+                  $(this).next().hide();
+                });
+
+                var echartsA = echarts.init(document.getElementById('tpl-echarts'));
+                optionA = {
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    grid: {
+                        top: '3%',
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [{
+                        type: 'category',
+                        boundaryGap: false,
+                        data: [
+                        {% for d in days %}
+                            {% for c in classes_nums %}
+                                    "{{d + c}}",
+                            {% end for %}
+                        {% end for %}
+                        ]
+                    }],
+                    yAxis: [{
+                        type: 'value'
+                    }],
+                    textStyle: {
+                        color: '#838FA1'
+                    },
+                    series: [{
+                        name: '综合得分',
+                        type: 'line',
+                        smooth: true,
+                        data: [
+                        {% for l in class_info["lessons"] %}
+                            {% for sl in l %}
+                                {{round(sl["points"],2)}},
+                            {% end for %}
+                        {% end for %}
+                        ],
+                        itemStyle: {
+                            normal: {
+                                color: '#1cabdb',
+                                borderColor: '#1cabdb',
+                                borderWidth: '2',
+                                borderType: 'solid',
+                                opacity: '1'
+                            },
+                            emphasis: {
+        
+                            }
+                        }
+                    }]
+                };
+        
+                echartsA.setOption(optionA);
+
+                var echartsB = echarts.init(document.getElementById('tpl-echartsB'));
+                optionB = {
+                    color: ['#3398DB'],
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['0-60', '60-70', '70-80', '80-90', '90-100'],
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'数量',
+                            type:'bar',
+                            barWidth: '60%',
+                            data:{{bar_data}}
+                        }
+                    ]
+                };
+                echartsB.setOption(optionB);
+                
+            })
+                
+    </script>
+
+</body>
+
+</html>

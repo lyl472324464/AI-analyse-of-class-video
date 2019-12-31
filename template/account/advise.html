@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .am-gallery-item{
+            position: relative;
+        }
+        .am-progress{
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            height: .6rem !important;
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="/si?SchoolID=cfyz"><img src="/static/img/logo.png" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <div class="am-fl tpl-header-switch-button am-icon-list-ul"></div>
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎 -->
+                        <li class="am-text-sm">
+                            <a href="#">{{user}}</a>
+                        </li>
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="/">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="/advise">
+                        <i class="am-icon-file-text-o sidebar-nav-link-logo"></i>意见反馈
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="/cp">
+                        <i class="am-icon-cog sidebar-nav-link-logo"></i>帐号设置
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="http://www.dooncloud.com/about-us">
+                        <i class="am-icon-info-circle sidebar-nav-link-logo"></i>关于我们
+                    </a>
+                </li>
+                <li class="sidebar-nav-heading"></li>
+            </ul>
+        </div>
+        <div class="tpl-content-wrapper">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:20px">
+                    <div class="am-u-sm-12 am-u-md-4 am-u-md-offset-4">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> 意见反馈 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="am-cf widget-body-md widget-body">
+                                <div class="am-u-sm-12 am-u-md-12" style="padding-left: 40px">
+                                    <form class="am-form">
+                                        <fieldset>
+                                            <div class="am-form-group">
+                                                <textarea class="" rows="5" id="doc-ta-1" placeholder="您的宝贵意见..."></textarea>
+                                            </div>
+                                            <p><button class="am-btn am-btn-default">提交</button></p>
+                                        </fieldset>
+                                    </form>
+                                </div>                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("button").click(function(){
+            if($("#doc-ta-1").val() == ""){
+                alert("请输入您的宝贵意见～");
+            }else{
+                alert("感谢您的宝贵意见，我们会尽快处理～");
+                $("form").submit();
+            }
+        })
+    })
+    </script>
+
+</body>
+
+</html>

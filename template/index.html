@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>首页</title>
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="首页" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .am-container{
+            max-width: 1440px;
+        }
+        .school-index-content{
+            background-color: #fff;
+            margin: 0 !important;
+        }
+    </style>
+</head>
+
+<body  class="theme-white">
+
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header class="am-topbar" style="margin-bottom: 0">
+            <div class="am-container">
+                <h1 class="am-topbar-brand">
+                <a href="/"><img style="max-height: 100%" src="/static/img/logo.png"/></a>
+                </h1>
+            
+                <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+            
+                <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+                    <ul class="am-nav am-nav-pills am-topbar-nav">
+                        <li class="am-active"><a href="#">首页</a></li>
+                        {% if user[0] == None %}
+                        <li><a href="/warning">预警系统</a></li>
+                        <li><a href="/dxclasseslist">分析系统</a></li>
+                        {% elif user[1] == b"m" %}
+                        <li><a href="/warning">预警系统</a></li>
+                        <li><a href="/dxclasseslist">分析系统</a></li>
+                        {% elif user[1] == b"t" %}
+                        <li><a href="/wcd?class_id={{user[2]}}">预警系统</a></li>
+                        <li><a href="/dxeachclass?class_id={{user[2]}}">分析系统</a></li>
+                        {% end if %}
+                        <li><a href="#">查询系统</a></li>
+                    </ul>
+            
+                    {% if user[0] == None %}
+                    <div class="am-topbar-right">
+                        <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" href="/signup" target="_blank">注册</a>
+                    </div>
+                
+                    <div class="am-topbar-right">
+                            <a class="am-btn am-btn-primary am-topbar-btn am-btn-sm" href="/signin" target="_blank">登录</a>
+                    </div>
+                    {% else %}
+                    <div class="am-topbar-right">
+                        <div class="am-fr tpl-header-navbar">
+                            <ul>
+                                <!-- 欢迎 -->
+                                <li class="am-text-sm">
+                                    <a href="#">Hi，{{user[0]}} </a>
+                                </li>
+                                <!-- 退出 -->
+                                <li class="am-text-sm">
+                                    <a href="/signout">
+                                        <span class="am-icon-sign-out"></span> 退出
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>  
+                    </div>
+                    {% end if %}
+                </div>
+            </div>
+          </header>
+
+        <div data-am-widget="slider" class="am-slider am-slider-a2" data-am-slider='{&quot;directionNav&quot;:false}' >
+            <ul class="am-slides">
+                <li>
+                        <img src="/static/img/slider11.jpg">
+                    
+                </li>
+                <li>
+                        <img src="/static/img/slider22.jpg">
+                    
+                </li>
+            </ul>
+        </div>
+        <div class="school-index-content">
+            <div class="am-container">
+                <div class="am-g">
+                    <div class="am-u-md-6 am-u-sm-6">
+                        <div style="margin: 5%">
+                            <h2>实时分析和预警系统</h2>
+                            <p class="am-kai">AI实时分析学生行为，并对非正常行为进行预警。</p>
+                        </div>                       
+                    </div>
+                    <div class="am-u-md-6 am-u-sm-6">
+                        <img style="max-width: 90%;margin: 5%" src="/static/img/shishi.gif"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="school-index-content" style="background-color: #f5f5f5">
+            <div class="am-container">
+                <div class="am-g">                    
+                    <div class="am-u-md-6 am-u-sm-6" style="text-align: center">
+                        <img style="max-width: 90%;margin: 5%" src="/static/img/charts.png"/>
+                    </div>
+                    <div class="am-u-md-6 am-u-sm-6">
+                        <div style="margin: 5%">
+                            <h2>大数据统计分析系统</h2>
+                            <p class="am-kai">根据需求，进行个性化统计分析</p>
+                            <p class="am-kai">各种统计技术保证数据还原客观真实</p>
+                        </div>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+          <footer data-am-widget="footer"
+                class="am-footer am-footer-default"
+                data-am-footer="{  }">
+            <div class="am-footer-switch">
+            <span class="am-footer-ysp" data-rel="mobile"
+                data-am-modal="{target: '#am-switch-mode'}">
+                云适配版
+            </span>
+            <span class="am-footer-divider"> | </span>
+            <a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+                电脑版
+            </a>
+            </div>
+            <div class="am-footer-miscs ">
+
+                <p>由 <a href="http://www.dooncloud.com/" title="dooncloud"
+                                                        target="_blank" class="">xxxxx</a>
+                    提供技术支持</p>
+                <p>CopyRight©2014  AllMobilize Inc.</p>
+                <p>京ICP备13033158</p>
+            </div>
+        </footer>
+
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+
+</body>
+
+</html>

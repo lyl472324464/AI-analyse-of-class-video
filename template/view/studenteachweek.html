@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>深度课堂</title>
+    <meta name="description" content="这里是说明">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style type="text/css">
+        .dooncloud-body .widget-head{
+            padding-left: 0;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+
+<body class="theme-white">
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+       {% include "header.html" %}
+        
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-link">
+                    <a href="/cw?ClassID={{class_info["class_id"]}}&WeekID=1" class="active">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 返回上一层
+                    </a>
+                </li>
+<!--                 <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-link">
+                    <a href="/swc?StudentID={{student["student_id"]}}&WeekID=1">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 科目报告
+                </li>
+                <li class="sidebar-nav-heading"></li>
+<!--                 <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+
+
+   <div class="tpl-content-wrapper active" style="background-color: #fff">
+            <!--top start-->
+
+            <!-- top end-->
+            <!--报告内容-->
+                <div class="am-cf" style="margin-top:">
+                    <div class="am-u-sm-12 am-u-md-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title am-fl"> 本期报告 <span class="am-icon-file-text"></span>  </div>
+                            </div>
+                            <div class="widget-body am-fr dooncloud-body">
+                                    <div class="am-u-sm-6 am-u-md-2">
+                                        <img src="data:image/jpg;base64, {{student["student_image"]}}" style="width:118px;height:136px;border-radius:5px" class="am-center am-img-responsive">
+                                    </div>
+                                    <div class="am-u-sm-6 am-u-md-6">
+                                       姓名： {{student["student_name"]}}<br>
+                                       班级： {{class_info["class_name"]}}<br>
+                                       本周得分：  {{round(student["points"],2)}}<br>
+                                       本周简评：  {% if student["points"] > class_info["points"] %}本周得分高于班级平均分（{{round(class_info["points"],2)}}）{% else %}本堂课得分低于班级平均分（{{round(class_info["points"],2)}}）{% end if %}
+                                    </div>
+                                    <div class="am-u-sm-12 am-u-md-12">
+                
+                                        <div class="widget am-cf widget-body-lg">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">课程表</div>
+                                            </div>
+                                            <div class="widget-body  am-fr">
+                                                    <table width="100%" class="am-table am-table-compact am-text-nowrap" id="example-r">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>周一</th>
+                                                                <th>周二</th>
+                                                                <th>周三</th>
+                                                                <th>周四</th>
+                                                                <th>周五</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for i in range(9) %}                                     
+                                                                <tr class="gradeX">
+                                                                    {% for l in class_info["lessons"] %}
+                                                                    <td><a href="/sl?StudentID={{student["student_id"]}}&LessonNum={{l[i]["lesson_num"]}}">{{l[i]["lesson_name"]}}</a></td>
+                                                                    {% end for %}
+                                                                </tr>                                                             
+                                                            {% end for %}
+                                                        
+                
+                                                        </tbody>
+                                                    </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="am-u-sm-12 am-u-md-12">
+                                        <div class="widget am-cf">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">综合得分趋势</div>
+                                            </div>
+                                            <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
+                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="am-u-sm-12 am-u-md-12">
+                                        <div class="widget am-cf">
+                                            <div class="widget-head am-cf">
+                                                <div class="widget-title am-fl">得分分布图</div>
+                                            </div>
+                                            <div style="height: 400px" class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echartsB">
+                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                                                                   
+                            </div>
+                        </div>
+
+                    </div>
+         
+                </div>
+            
+            <!--报告内容-->
+            <div id="tpl-echarts">
+
+            </div>
+
+
+        </div>
+  
+    </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        
+                // ==========================
+                // 百度图表A http://echarts.baidu.com/
+                // ==========================
+        
+                var echartsA = echarts.init(document.getElementById('tpl-echarts'));
+                optionA = {
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    grid: {
+                        top: '3%',
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    legend: {
+                        data: ['学生得分', '班级平均得分']
+                    },
+                    xAxis: [{
+                        type: 'category',
+                        boundaryGap: false,
+                        data: [
+                        {% for d in days %}
+                            {% for c in classes_nums %}
+                                    "{{d + c}}",
+                            {% end for %}
+                        {% end for %}
+                        ]
+                    }],
+                    yAxis: [{
+                        type: 'value'
+                    }],
+                    textStyle: {
+                        color: '#838FA1'
+                    },
+                    series: [{
+                        name: '学生得分',
+                        type: 'line',
+                        smooth: true,
+                        data: [
+                        {% for l in student["points_each_class"] %}
+                            {% for sl in l %}
+                                {{round(sl,2)}},
+                            {% end for %}
+                        {% end for %}
+                        ],
+                        itemStyle: {
+                            normal: {
+                                color: '#e5323e',
+                                borderColor: '#e5323e',
+                                borderWidth: '2',
+                                borderType: 'solid',
+                                opacity: '1'
+                            },
+                            emphasis: {
+        
+                            }
+                        }
+                    },
+                    {
+                        name: '班级平均得分',
+                        type: 'line',
+                        smooth: true,
+                        data: [
+                        {% for l in class_info["lessons"] %}
+                            {% for sl in l %}
+                                {{round(sl["points"],2)}},
+                            {% end for %}
+                        {% end for %}
+                        ],
+                        itemStyle: {
+                            normal: {
+                                color: '#003366',
+                                borderColor: '#003366',
+                                borderWidth: '2',
+                                borderType: 'solid',
+                                opacity: '1'
+                            },
+                            emphasis: {
+        
+                            }
+                        }
+                    }
+                    ]
+                };
+        
+                echartsA.setOption(optionA);
+
+                var echartsB = echarts.init(document.getElementById('tpl-echartsB'));
+                optionB = {
+                    color: ['#3398DB'],
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['0-60', '60-70', '70-80', '80-90', '90-100'],
+                            axisTick: {
+                                alignWithLabel: true
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'数量',
+                            type:'bar',
+                            barWidth: '60%',
+                            data:{{bar_data}}
+                        }
+                    ]
+                };
+                echartsB.setOption(optionB);
+                
+            })
+    </script>
+
+</body>
+
+</html>

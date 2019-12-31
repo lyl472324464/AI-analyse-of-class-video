@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>实时分析与预警系统</title>
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="apple-mobile-web-app-title" content="实时分析与预警系统" />
+    <link rel="icon" type="image/png" href="/static/img/icon.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/css/amazeui.datatables.min.css" />
+    <link rel="stylesheet" href="/static/css/app.css">
+    <style>
+        .am-container{
+            max-width: 1440px;
+        }
+        .school-index-content{
+            background-color: #fff;
+            margin: 0 !important;
+            background-repeat: no-repeat;
+            background-size: auto 540px;
+            background-position: top;
+            overflow: hidden;
+        }
+        .am-badge{
+            float: right;
+        }
+    </style>
+</head>
+
+<body  class="theme-white">
+
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        {% include 'header.html' %}
+        <div class="left-sidebar active">
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+<!--                 <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 最新动态
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="tables.html">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 我的数据
+                    </a>
+                </li> -->
+                <li class="sidebar-nav-link">
+                    <a href="/myaccount" target="_blank" >
+                        <i class="am-icon-home sidebar-nav-link-logo"></i>个人信息
+                    </a>
+                </li>
+                <li class="sidebar-nav-heading"></li>
+<!--                 <li class="sidebar-nav-link">
+                    <a href="#">
+                        <i class="am-icon-tv sidebar-nav-link-logo"></i> 设置
+                    </a>
+                </li> -->
+
+            </ul>
+        </div>
+        <div class="tpl-content-wrapper active" style="margin-top:0">
+            <div class="school-index-content" style="background-image: url(/static/img/slider3.jpg); background-color: #1f2326">
+                <div class="am-container">
+                    <div class="am-g">
+                        <div class="am-u-md-10 am-u-sm-10">
+                            <div style="margin: 80px 0; color: #fff">
+                                <h1 style="font-size: 36px">实时分析和预警系统</h1>
+                                <p class="am-kai">AI实时处理课堂视频流，精确定位每个学生的位置，并对其行为进行多尺度分类，从而对特定状态实时预警。</p>
+                                <button data-am-modal="{target: '#doc-modal-1'}" type="button" class="am-btn am-btn-secondary" style="background-color: #00c1de;font-size: 14px;line-height: 20px;width: 120px;margin-top: 20px">进入系统</button>
+                            </div>                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="school-index-content">
+                <div class="am-container">
+                    <div id="liucheng" style="height: 500px">
+
+                    </div>
+                </div>
+            </div>
+            <div class="school-index-content" style="background-color: #f5f5f5">
+                <div class="am-container">
+                    <h2 style="margin-top:20px">效果展示</h2>
+                    <div style="text-align:center">
+                        <img style="max-width: 90%;margin: 5%;border-radius: 5px" src="/static/img/shishi.gif"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+          <footer data-am-widget="footer"
+                class="am-footer am-footer-default"
+                data-am-footer="{  }">
+            <div class="am-footer-switch">
+            <span class="am-footer-ysp" data-rel="mobile"
+                data-am-modal="{target: '#am-switch-mode'}">
+                云适配版
+            </span>
+            <span class="am-footer-divider"> | </span>
+            <a id="godesktop" data-rel="desktop" class="am-footer-desktop" href="javascript:">
+                电脑版
+            </a>
+            </div>
+            <div class="am-footer-miscs ">
+
+                <p>由 <a href="http://www.dooncloud.com/" title="dooncloud"
+                                                        target="_blank" class="">xxxxx</a>
+                    提供技术支持</p>
+                <p>CopyRight©2014  AllMobilize Inc.</p>
+                <p>京ICP备13033158</p>
+            </div>
+        </footer>
+
+    </div>
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+        <div class="am-modal-dialog" style="width: 800px">
+            <div class="am-modal-hd">选择您要观看的班级
+            <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+            </div>
+            <div class="am-modal-bd" style="text-align: left">
+                <small style="padding-left: 10px;opacity: 0.5;">根据您的权限，您可观看的班级如下</small>
+                <ul data-am-widget="gallery" class="am-gallery am-avg-sm-2
+                am-avg-md-3 am-avg-lg-4 am-gallery-bordered" data-am-gallery="{  }" >
+                {% for c in classes %}
+                    
+                    <li>
+                        <div class="am-gallery-item">
+                            <a href="/wcd?class_id={{c['class_id']}}" class="">
+                            <img src="/static/img/class-logo.jpg"  alt=""/>
+                                <h3 class="am-gallery-title">{{c['class_name']}}{% if c["state"] == 0 %}<span class="am-badge am-badge-danger am-radius">未开启运算</span>{% else %}<span class="am-badge am-badge-secondary am-radius">已开启运算</span>{% end if %}</h3>
+                            </a>
+                        </div>
+                    </li>
+                    
+                {% end for %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/amazeui.min.js"></script>
+    <script src="/static/js/amazeui.datatables.min.js"></script>
+    <script src="/static/js/dataTables.responsive.min.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        
+        // ==========================
+        // 百度图表A http://echarts.baidu.com/
+        // ==========================
+
+        var echartsA = echarts.init(document.getElementById('liucheng'));
+        optionA = {
+            title: {
+                text: '系统流程图',
+                top: 20,
+            },
+            tooltip: {},
+            animationDurationUpdate: 1500,
+            animationEasingUpdate: 'quinticInOut',
+            series : [
+                {
+                    type: 'graph',
+                    layout: 'none',
+                    symbolSize: 50,
+                    roam: false,
+                    label: {
+                        normal: {
+                            show: true
+                        }
+                    },
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [4, 10],
+                    data: [{
+                        name: '视频流',
+                        x: 550,
+                        y: 100
+                    }, {
+                        name: '学生定位',
+                        x: 550,
+                        y: 200
+                    }, {
+                        name: '行为特征',
+                        x: 300,
+                        y: 300
+                    }, {
+                        name: '其他特征',
+                        x: 800,
+                        y: 300
+                    }, {
+                        name: '抬头',
+                        x: 0,
+                        y: 400
+                    }, {
+                        name: '低头',
+                        x: 100,
+                        y: 400
+                    }, {
+                        name: '瞌睡',
+                        x: 200,
+                        y: 400
+                    }, {
+                        name: '起立',
+                        x: 300,
+                        y: 400
+                    }, {
+                        name: '交谈',
+                        x: 400,
+                        y: 400
+                    }, {
+                        name: '举手',
+                        x: 500,
+                        y: 400
+                    }, {
+                        name: '其他',
+                        x: 600,
+                        y: 400
+                    }, {
+                        name: '脸部特征',
+                        x: 700,
+                        y: 400
+                    }, {
+                        name: '个性化定制',
+                        x: 900,
+                        y: 400
+                    }, {
+                        name: '预警',
+                        x: 300,
+                        y: 500
+                    }, {
+                        name: '存储',
+                        x: 800,
+                        y: 500
+                    }],
+                    // links: [],
+                    links: [{
+                        source: 0,
+                        target: 1,
+                    }, {
+                        source: 1,
+                        target: 2,
+                    }, {
+                        source: 1,
+                        target: 3
+                    }, {
+                        source: 2,
+                        target: 4
+                    }, {
+                        source: 2,
+                        target: 5
+                    }, {
+                        source: 2,
+                        target: 6
+                    }, {
+                        source: 2,
+                        target: 7
+                    }, {
+                        source: 2,
+                        target: 8
+                    }, {
+                        source: 2,
+                        target: 9
+                    }, {
+                        source: 2,
+                        target: 10
+                    }, {
+                        source: 3,
+                        target: 11
+                    }, {
+                        source: 3,
+                        target: 12
+                    }, {
+                        source: 4,
+                        target: 13
+                    }, {
+                        source: 5,
+                        target: 13
+                    }, {
+                        source: 6,
+                        target: 13
+                    }, {
+                        source: 7,
+                        target: 13
+                    }, {
+                        source: 8,
+                        target: 13
+                    }, {
+                        source: 9,
+                        target: 13
+                    }, {
+                        source: 10,
+                        target: 13
+                    }, {
+                        source: 11,
+                        target: 13
+                    }, {
+                        source: 12,
+                        target: 13
+                    }, {
+                        source: 4,
+                        target: 14
+                    }, {
+                        source: 5,
+                        target: 14
+                    }, {
+                        source: 6,
+                        target: 14
+                    }, {
+                        source: 7,
+                        target: 14
+                    }, {
+                        source: 8,
+                        target: 14
+                    }, {
+                        source: 9,
+                        target: 14
+                    }, {
+                        source: 10,
+                        target: 14
+                    }, {
+                        source: 11,
+                        target: 14
+                    }, {
+                        source: 12,
+                        target: 14
+                    }],
+                    lineStyle: {
+                        normal: {
+                            opacity: 0.9,
+                            width: 2,
+                            curveness: 0
+                        }
+                    }
+                }
+            ]
+        };
+        echartsA.setOption(optionA);
+    })
+    </script>
+</body>
+
+</html>
