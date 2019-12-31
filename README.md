@@ -9,3 +9,13 @@
 - 摄像头分辨率是4K的条件下，分析速度可达到1秒两帧
 
 ## Install
+[INSTALL.md](/INSTALL.md)
+
+## DEMO
+```
+cd AI-analyse-of-class-video
+python main.py
+```
+访问网址：127.0.0.1:8000
+帐号：test
+密码：123456
