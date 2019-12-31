@@ -12,7 +12,7 @@ import pymongo
 if __name__ == '__main__':
     tornado.options.parse_command_line()  
     conn = pymongo.MongoClient('localhost',27017)
-    db = conn['yuanzang']       
+    db = conn['test']       
     tornado.options.parse_command_line()  
     settings = {
         "template_path": os.path.join(os.path.dirname(__file__), "template"),
@@ -25,5 +25,5 @@ if __name__ == '__main__':
     }
     app = tornado.web.Application(urls.handlers, **settings)
     http_server = tornado.httpserver.HTTPServer(app)
-    http_server.listen(1111)
+    http_server.listen(8000)
     tornado.ioloop.IOLoop.instance().start()
